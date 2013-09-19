@@ -1,68 +1,89 @@
-  context = document.getElementById('canvasInAPerfectWorld').getContext("2d");
+    // get the canvas element and its context
+    var canvas = document.getElementById('sketchpad');
+    var context = canvas.getContext('2d');
 
-  var canvasDiv = document.getElementById('canvasDiv');
-  canvas = document.createElement('canvas');
-  canvas.setAttribute('width', canvasWidth);
-  canvas.setAttribute('height', canvasHeight);
-  canvas.setAttribute('id', 'canvas');
-  canvasDiv.appendChild(canvas);
-  if(typeof G_vmlCanvasManager != 'undefined') {
-  	canvas = G_vmlCanvasManager.initElement(canvas);
-  }
-  context = canvas.getContext("2d");
-  
-  $('#canvas').mousedown(function(e){
-    var mouseX = e.pageX - this.offsetLeft;
-    var mouseY = e.pageY - this.offsetTop;
+    
+    // Colors
+    $("#color-zero").click(function(){
+      context.fillStyle = '#000000'; // black
+      context.strokeStyle = '#000000'; // black
+    });
+    
+    $("#color-one").click(function(){
+      context.fillStyle = '#eb3524'; // red
+      context.strokeStyle = '#eb3524'; // red
+    });
+    
+    $("#color-two").click(function(){
+      context.fillStyle = '#df4e32'; // o
+      context.strokeStyle = '#df4e32'; // o
+    });
+    
+    $("#color-three").click(function(){
+      context.fillStyle = '#dfab30'; // y
+      context.strokeStyle = '#dfab30'; // y
+    });
+    
+    $("#color-four").click(function(){
+      context.fillStyle = '#4abb86'; // g
+      context.strokeStyle = '#4abb86'; // g
+    });
+    
+    $("#color-five").click(function(){
+      context.fillStyle = '#3498db'; // b
+      context.strokeStyle = '#3498db'; // b
+    });
+    
+    $("#color-six").click(function(){
+      context.fillStyle = '#35489d'; // i
+      context.strokeStyle = '#35489d'; // i
+    });
+    
+    $("#color-seven").click(function(){
+      context.fillStyle = '#852472'; // v
+      context.strokeStyle = '#852472'; // v
+    });
 
-    paint = true;
-    addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
-    redraw();
-  });
-  
-  $('#canvas').mousemove(function(e){
-    if(paint){
-      addClick(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
-      redraw();
-    }
-  });
-  
-  $('#canvas').mouseup(function(e){
-    paint = false;
-  });
-  
-  $('#canvas').mouseleave(function(e){
-    paint = false;
-  });
-  
-  var clickX = new Array();
-  var clickY = new Array();
-  var clickDrag = new Array();
-  var paint;
-
-  function addClick(x, y, dragging)
-  {
-    clickX.push(x);
-    clickY.push(y);
-    clickDrag.push(dragging);
-  }
-  
-  function redraw(){
-    context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
-
-    context.strokeStyle = "#df4b26";
-    context.lineJoin = "round";
-    context.lineWidth = 5;
-
-    for(var i=0; i < clickX.length; i++) {		
-      context.beginPath();
-      if(clickDrag[i] && i){
-        context.moveTo(clickX[i-1], clickY[i-1]);
-       }else{
-         context.moveTo(clickX[i]-1, clickY[i]);
+    
+    // create a drawer which tracks touch movements
+    var drawer = {
+       isDrawing: false,
+       touchstart: function(coors){
+          context.beginPath();
+          context.moveTo(coors.x, coors.y);
+          this.isDrawing = true;
+       },
+       touchmove: function(coors){
+          if (this.isDrawing) {
+             context.lineTo(coors.x, coors.y);
+             context.stroke();
+          }
+       },
+       touchend: function(coors){
+          if (this.isDrawing) {
+             this.touchmove(coors);
+             this.isDrawing = false;
+          }
        }
-       context.lineTo(clickX[i], clickY[i]);
-       context.closePath();
-       context.stroke();
+    };
+
+    // create a function to pass touch events and coordinates to drawer
+    function draw(event){
+       // get the touch coordinates
+       var coors = {
+          x: event.targetTouches[0].pageX,
+          y: event.targetTouches[0].pageY
+       };
+       // pass the coordinates to the appropriate handler
+       drawer[event.type](coors);
     }
-  }
+
+    // attach the touchstart, touchmove, touchend event listeners.
+    canvas.addEventListener('touchstart',draw, false);
+    canvas.addEventListener('touchmove',draw, false);
+    canvas.addEventListener('touchend',draw, false);
+
+    // prevent elastic scrolling
+    document.body.addEventListener('touchmove',function(event){
+      event.preventDefault();
+    },false);	// end body:touchmove

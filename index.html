@@ -22,26 +22,15 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/grid.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://www.eyecon.ro/bootstrap-slider/css/slider.css" rel="stylesheet">
     
     <title>Drawl</title>
     
-    <style type="text/css">
-
-      #canvasArea { 
-        position: relative;
-      }
-      #imageView {
-        border: 1px solid black;
-        height:380px;
-      }
-      .toolbar {
-        background: #ccc;
+    <style type="text/css" media="screen">
+      #done-panel {
         position: absolute;
-        bottom: 0;
-        width: 100%;
-        //height: 20px;
+        bottom: -100;
       }
-      
       
     </style>
     
@@ -50,7 +39,9 @@
 <body>
   
     <div id="top">
-      <canvas id="canvasDiv" class="col-xs-12"></canvas>
+      <canvas id="sketchpad" width="320" height="392">
+        Sorry, your browser is not supported.
+      </canvas>		
     </div>
     
     <footer id="footer">
@@ -62,28 +53,43 @@
           <button type="button" class="btn btn-default" id="btn-brushsize">S</button>
         </div>
         <div class="col-xs-3">
-          <button type="button" class="btn btn-default pull-right" id="btn-save">Done</button>
+          <button type="button" class="btn btn-default pull-right" id="btn-done">Done</button>
         </div>
       </nav>
     </footer>
     
+    <div id="done-panel" class="panel panel-default">
+      <div class="panel-heading">What do you want to do?</div>
+      <div class="panel-body">
+        <button type="button" class="btn btn-primary btn-lg btn-block">Save</button>
+        <button type="button" class="btn btn-default btn-lg btn-block">New</button>
+        <button type="button" class="btn btn-default btn-lg btn-block">Cancel</button>
+      </div>
+    </div>
+    
     <div class="toolbar" id="colorpicker">
         <div class="col-xs-12">
-          <button class="btn btn-default">1</button>
-          <button class="btn btn-default">2</button>
-          <button class="btn btn-default">3</button>
-          <button class="btn btn-default">4</button>
-          <button class="btn btn-default">5</button>
-          <button class="btn btn-default">6</button>
-          <button class="btn btn-default">7</button>
+          <button class="btn btn-default" id="color-zero">b</button>
+          <button class="btn btn-default" id="color-one">r</button>
+          <button class="btn btn-default" id="color-two">o</button>
+          <button class="btn btn-default" id="color-three">y</button>
+          <button class="btn btn-default" id="color-four">g</button>
+          <button class="btn btn-default" id="color-five">b</button>
+          <button class="btn btn-default" id="color-six">i</button>
+          <button class="btn btn-default" id="color-seven">v</button>
         </div>
     </div>
     
     <div class="toolbar" id="brushsize">
         <div class="col-xs-12">
-          <button class="btn btn-default">1</button>
-          <button class="btn btn-default">2</button>
-          <button class="btn btn-default">3</button>
+          <!-- <p>Brush size</p> -->
+          <div id="brushStrokeSize" class="slider slider-horizontal" style="width: 240px;"></div>
+          
+          <!-- <p>Brush softness</p> -->
+          <!-- <div id="brushSoftness" class="slider slider-horizontal" style="width: 140px;"></div> -->
+          
+          <!-- <p>Opacity</p>
+          <div id="brushOpacity" class="slider slider-horizontal" style="width: 140px;"></div> -->
         </div>
     </div>
 
@@ -91,98 +97,34 @@
     <script type="text/javascript" src="js/webapp.js"></script>
     <script type="text/javascript" src="js/offline.js"></script>
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-    <!-- <script type="text/javascript" src="js/draw.js"></script> -->
+    <script type="text/javascript" src="js/draw.js"></script>
+    <script type="text/javascript" src="js/toolbar.js"></script>
+    <script type="text/javascript" src="http://www.eyecon.ro/bootstrap-slider/js/bootstrap-slider.js"></script>
+    <script type="text/javascript" src="js/modernizr.js"></script>
 
     <!-- 
         Loosely based on fxosstub: https://github.com/Jaxo/fxosstub
     -->
     
     <script type="text/javascript" charset="utf-8">
-    
-      // Pencil button
-      $("#btn-pencil").click(function(){
-        alert("pencil");
-      })
       
-      // toggle the color picker
-      var i = 0;
-      $("#btn-colorpicker").on('click', function(){
-        if(i == 0 && n == 1) {
-          //alert(i);
-          i = 0;
-          n = 0;
-          $( "#colorpicker.toolbar" ).animate({
-              bottom: "0"
-            }, 500);
-        }
-        if(i == 1 && n == 1) {
-          i = 0;
-          n = 0;
-          $( "#colorpicker.toolbar" ).animate({
-              bottom: "0"
-            }, 500);
-        }
-        if(i == 0 || n == 1) {
-          i = 1;
-          $( "#colorpicker.toolbar" ).animate({
-              bottom: "64"
-            }, 500);
-          $( "#brushsize.toolbar" ).animate({
-              bottom: "0"
-            }, 500);
-        } else {
-          //alert(i);
-          i = 0;
-          $( "#colorpicker.toolbar" ).animate({
-              bottom: "0"
-            }, 500);
-        }
-      });
+      // Change the Brush Softness
       
-      //Eraser button
-      $("#btn-eraser").click(function(){
-        alert("eraser");
-      })
-
-      // toggle the brushsize
-      var n = 0;
-      $("#btn-brushsize").on('click', function(){
-        if(i == 1 && n == 0) {
-          //alert(i);
-          i = 0;
-          n = 0;
-          $( "#brushsize.toolbar" ).animate({
-              bottom: "0"
-            }, 500);
-        }
-        if(i == 1 && n == 1) {
-          //alert(i);
-          i = 0;
-          n = 0;
-          $( "#brushsize.toolbar" ).animate({
-              bottom: "0"
-            }, 500);
-        }
-        if(n == 0 || i == 1) {
-          n = 1;
-          $( "#brushsize.toolbar" ).animate({
-              bottom: "64"
-            }, 500);
-          $( "#colorpicker.toolbar" ).animate({
-              bottom: "0"
-            }, 500);
-        } else {
-          n = 0;
-          $( "#brushsize.toolbar" ).animate({
-              bottom: "0"
-            }, 500);
-        }
-      });
       
-      // Save button
-      $("#btn-save").click(function(){
-        alert("save");
+      // Change the Brush Opacity
+      
+      
+      // Change the Brush Stroke
+      var BrushChange = function() {
+        context.lineWidth = brushStroke.getValue();
+      };
+      
+      var brushStroke = $('#brushStrokeSize').slider({
+        tooltip: "hide"
       })
+                      .on('slide', BrushChange)
+                      .data('slider');
+      
       
     </script>
 
