@@ -27,9 +27,16 @@
     <title>Drawl</title>
     
     <style type="text/css" media="screen">
+      #container {
+        height: 480px;
+        overflow: hidden;
+      }
+    
       #done-panel {
         position: absolute;
-        bottom: -100;
+        width: 100%;
+        bottom: -240px;
+        z-index: 9999;
       }
       
     </style>
@@ -38,95 +45,99 @@
 
 <body>
   
-    <div id="top">
-      <canvas id="sketchpad" width="320" height="392">
-        Sorry, your browser is not supported.
-      </canvas>		
-    </div>
-    
-    <footer id="footer">
-      <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-        <div class="col-xs-9">
-          <button type="button" class="btn btn-default" id="btn-pencil">P</button>
-          <button type="button" class="btn btn-default" id="btn-colorpicker">C</button>
-          <button type="button" class="btn btn-default" id="btn-eraser">E</button>
-          <button type="button" class="btn btn-default" id="btn-brushsize">S</button>
-        </div>
-        <div class="col-xs-3">
-          <button type="button" class="btn btn-default pull-right" id="btn-done">Done</button>
-        </div>
-      </nav>
-    </footer>
-    
-    <div id="done-panel" class="panel panel-default">
-      <div class="panel-heading">What do you want to do?</div>
-      <div class="panel-body">
-        <button type="button" class="btn btn-primary btn-lg btn-block">Save</button>
-        <button type="button" class="btn btn-default btn-lg btn-block">New</button>
-        <button type="button" class="btn btn-default btn-lg btn-block">Cancel</button>
+  <div id="container">
+      <div id="top">
+        <canvas id="sketchpad" width="320" height="392">
+          Sorry, your browser is not supported.
+        </canvas>		
       </div>
-    </div>
     
-    <div class="toolbar" id="colorpicker">
-        <div class="col-xs-12">
-          <button class="btn btn-default" id="color-zero">b</button>
-          <button class="btn btn-default" id="color-one">r</button>
-          <button class="btn btn-default" id="color-two">o</button>
-          <button class="btn btn-default" id="color-three">y</button>
-          <button class="btn btn-default" id="color-four">g</button>
-          <button class="btn btn-default" id="color-five">b</button>
-          <button class="btn btn-default" id="color-six">i</button>
-          <button class="btn btn-default" id="color-seven">v</button>
+      <footer id="footer">
+        <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+          <div class="col-xs-9">
+            <button type="button" class="btn btn-default" id="btn-pencil">P</button>
+            <button type="button" class="btn btn-default" id="btn-colorpicker">C</button>
+            <button type="button" class="btn btn-default" id="btn-eraser">E</button>
+            <button type="button" class="btn btn-default" id="btn-brushsize">S</button>
+          </div>
+          <div class="col-xs-3">
+            <button type="button" class="btn btn-default pull-right" id="btn-done">Done</button>
+          </div>
+        </nav>
+      </footer>
+    
+      <div id="done-panel" class="panel panel-default">
+        <div class="panel-heading">What do you want to do?</div>
+        <div class="panel-body">
+          <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-save">Save</button>
+          <button type="button" class="btn btn-default btn-lg btn-block" id="btn-new">New</button>
+          <button type="button" class="btn btn-default btn-lg btn-block" id="btn-cancel">Cancel</button>
         </div>
-    </div>
+      </div>
     
-    <div class="toolbar" id="brushsize">
-        <div class="col-xs-12">
-          <!-- <p>Brush size</p> -->
-          <div id="brushStrokeSize" class="slider slider-horizontal" style="width: 240px;"></div>
-          
-          <!-- <p>Brush softness</p> -->
-          <!-- <div id="brushSoftness" class="slider slider-horizontal" style="width: 140px;"></div> -->
-          
-          <!-- <p>Opacity</p>
-          <div id="brushOpacity" class="slider slider-horizontal" style="width: 140px;"></div> -->
-        </div>
-    </div>
-
-    <script type="text/javascript" src="js/base.js"></script>
-    <script type="text/javascript" src="js/webapp.js"></script>
-    <script type="text/javascript" src="js/offline.js"></script>
-    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="js/draw.js"></script>
-    <script type="text/javascript" src="js/toolbar.js"></script>
-    <script type="text/javascript" src="http://www.eyecon.ro/bootstrap-slider/js/bootstrap-slider.js"></script>
-    <script type="text/javascript" src="js/modernizr.js"></script>
-
-    <!-- 
-        Loosely based on fxosstub: https://github.com/Jaxo/fxosstub
-    -->
+      <div class="toolbar" id="colorpicker">
+          <div class="col-xs-12">
+            <button class="btn btn-default" id="color-zero">b</button>
+            <button class="btn btn-default" id="color-one">r</button>
+            <button class="btn btn-default" id="color-two">o</button>
+            <button class="btn btn-default" id="color-three">y</button>
+            <button class="btn btn-default" id="color-four">g</button>
+            <button class="btn btn-default" id="color-five">b</button>
+            <button class="btn btn-default" id="color-six">i</button>
+            <button class="btn btn-default" id="color-seven">v</button>
+          </div>
+      </div>
     
-    <script type="text/javascript" charset="utf-8">
+      <div class="toolbar" id="brushsize">
+          <div class="col-xs-12">
+            <!-- <p>Brush size</p> -->
+            <div id="brushStrokeSize" class="slider slider-horizontal" style="width: 240px;"></div>
+          
+            <!-- <p>Brush softness</p> -->
+            <!-- <div id="brushSoftness" class="slider slider-horizontal" style="width: 140px;"></div> -->
+          
+            <!-- <p>Opacity</p>
+            <div id="brushOpacity" class="slider slider-horizontal" style="width: 140px;"></div> -->
+          </div>
+      </div>
       
-      // Change the Brush Softness
-      
-      
-      // Change the Brush Opacity
-      
-      
-      // Change the Brush Stroke
-      var BrushChange = function() {
-        context.lineWidth = brushStroke.getValue();
-      };
-      
-      var brushStroke = $('#brushStrokeSize').slider({
-        tooltip: "hide"
-      })
-                      .on('slide', BrushChange)
-                      .data('slider');
-      
-      
-    </script>
+  </div> <!-- end container -->
+
+
+  <script type="text/javascript" src="js/base.js"></script>
+  <script type="text/javascript" src="js/webapp.js"></script>
+  <script type="text/javascript" src="js/offline.js"></script>
+  <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+  <script type="text/javascript" src="js/draw.js"></script>
+  <script type="text/javascript" src="js/toolbar.js"></script>
+  <script type="text/javascript" src="http://www.eyecon.ro/bootstrap-slider/js/bootstrap-slider.js"></script>
+  <script type="text/javascript" src="js/modernizr.js"></script>
+
+  <!-- 
+      Loosely based on fxosstub: https://github.com/Jaxo/fxosstub
+  -->
+  
+  <script type="text/javascript" charset="utf-8">
+    
+    // Change the Brush Softness
+    
+    
+    // Change the Brush Opacity
+    
+    
+    // Change the Brush Stroke
+    var BrushChange = function() {
+      context.lineWidth = brushStroke.getValue();
+    };
+    
+    var brushStroke = $('#brushStrokeSize').slider({
+      tooltip: "hide"
+    })
+                    .on('slide', BrushChange)
+                    .data('slider');
+    
+    
+  </script>
 
 </body>
 </html>
