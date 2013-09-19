@@ -1,0 +1,35 @@
+/*body {
+  font-family: -apple-system-font;
+}
+
+p {
+  font-family: -apple-system-font;
+  font-size: 17px;
+  line-height: 21px;
+}
+
+li {
+  font-family: -apple-system-font;
+  font-size: 17px;
+  line-height: 21px;
+}
+
+headers {
+  font-family: -apple-system-font;
+  font-weight: bold;
+}
+
+h1 {
+  font-family: -apple-system-font;
+  font-weight: 100;
+}*/
+
+
+//portrait view
+@media (min-width: 320px) {
+  body {
+    background: black;
+  }
+}
+
+//landscape view

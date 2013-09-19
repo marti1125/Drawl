@@ -113,12 +113,12 @@ header.show-install h1 {
     display: none;
 }
 
-footer {
+/*footer {
     position: fixed;
     width: 100%;
     height: 5rem;
     bottom: 0;
-}
+}*/
 
 [role="toolbar"] li button.update {
     background-image: url("../images/toolbars/icons/update.png");

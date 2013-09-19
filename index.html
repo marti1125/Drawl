@@ -16,47 +16,175 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" type="text/css" href="css/base.css">
-    <link rel="stylesheet" type="text/css" href="css/headers.css">
-    <link rel="stylesheet" type="text/css" href="css/buttons.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/headers.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/buttons.css"> -->
     <link rel="stylesheet" type="text/css" href="css/toolbars.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <title>Drawl!</title>
+    <link rel="stylesheet" type="text/css" href="css/grid.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/styles.css" rel="stylesheet">
+    
+    <title>Drawl</title>
+    
+    <style type="text/css">
+
+      #canvasArea { 
+        position: relative;
+      }
+      #imageView {
+        border: 1px solid black;
+        height:380px;
+      }
+      .toolbar {
+        background: #ccc;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        //height: 20px;
+      }
+      
+      
+    </style>
+    
 </head>
 
 <body>
-
-    <section role="region">
-        <header>
-            <!-- Icon that will indicate whether you are online or offline - enabled if you are using offline/appcache (see above) -->
-
-            <h1>
-                Drawl!
-            </h1>
-        </header>
-    </section>
-
-
-    <div id="main">
-
-      Canvas
-        
+  
+    <div id="top">
+      <canvas id="canvasDiv" class="col-xs-12"></canvas>
     </div>
-
-    <footer>
-        <div role="toolbar">
-          Toolbar
+    
+    <footer id="footer">
+      <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+        <div class="col-xs-9">
+          <button type="button" class="btn btn-default" id="btn-pencil">P</button>
+          <button type="button" class="btn btn-default" id="btn-colorpicker">C</button>
+          <button type="button" class="btn btn-default" id="btn-eraser">E</button>
+          <button type="button" class="btn btn-default" id="btn-brushsize">S</button>
         </div>
+        <div class="col-xs-3">
+          <button type="button" class="btn btn-default pull-right" id="btn-save">Done</button>
+        </div>
+      </nav>
     </footer>
+    
+    <div class="toolbar" id="colorpicker">
+        <div class="col-xs-12">
+          <button class="btn btn-default">1</button>
+          <button class="btn btn-default">2</button>
+          <button class="btn btn-default">3</button>
+          <button class="btn btn-default">4</button>
+          <button class="btn btn-default">5</button>
+          <button class="btn btn-default">6</button>
+          <button class="btn btn-default">7</button>
+        </div>
+    </div>
+    
+    <div class="toolbar" id="brushsize">
+        <div class="col-xs-12">
+          <button class="btn btn-default">1</button>
+          <button class="btn btn-default">2</button>
+          <button class="btn btn-default">3</button>
+        </div>
+    </div>
 
     <script type="text/javascript" src="js/base.js"></script>
     <script type="text/javascript" src="js/webapp.js"></script>
     <script type="text/javascript" src="js/offline.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <!-- <script type="text/javascript" src="js/draw.js"></script> -->
 
     <!-- 
         Loosely based on fxosstub: https://github.com/Jaxo/fxosstub
     -->
+    
+    <script type="text/javascript" charset="utf-8">
+    
+      // Pencil button
+      $("#btn-pencil").click(function(){
+        alert("pencil");
+      })
+      
+      // toggle the color picker
+      var i = 0;
+      $("#btn-colorpicker").on('click', function(){
+        if(i == 0 && n == 1) {
+          //alert(i);
+          i = 0;
+          n = 0;
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "0"
+            }, 500);
+        }
+        if(i == 1 && n == 1) {
+          i = 0;
+          n = 0;
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "0"
+            }, 500);
+        }
+        if(i == 0 || n == 1) {
+          i = 1;
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "64"
+            }, 500);
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "0"
+            }, 500);
+        } else {
+          //alert(i);
+          i = 0;
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "0"
+            }, 500);
+        }
+      });
+      
+      //Eraser button
+      $("#btn-eraser").click(function(){
+        alert("eraser");
+      })
+
+      // toggle the brushsize
+      var n = 0;
+      $("#btn-brushsize").on('click', function(){
+        if(i == 1 && n == 0) {
+          //alert(i);
+          i = 0;
+          n = 0;
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "0"
+            }, 500);
+        }
+        if(i == 1 && n == 1) {
+          //alert(i);
+          i = 0;
+          n = 0;
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "0"
+            }, 500);
+        }
+        if(n == 0 || i == 1) {
+          n = 1;
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "64"
+            }, 500);
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "0"
+            }, 500);
+        } else {
+          n = 0;
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "0"
+            }, 500);
+        }
+      });
+      
+      // Save button
+      $("#btn-save").click(function(){
+        alert("save");
+      })
+      
+    </script>
 
 </body>
 </html>
