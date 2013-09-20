@@ -24,27 +24,14 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="http://www.eyecon.ro/bootstrap-slider/css/slider.css" rel="stylesheet">
     
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    
     <title>Drawl</title>
-    
-    <style type="text/css" media="screen">
-      #container {
-        height: 480px;
-        overflow: hidden;
-      }
-    
-      #done-panel {
-        position: absolute;
-        width: 100%;
-        bottom: -240px;
-        z-index: 9999;
-      }
-      
-    </style>
     
 </head>
 
 <body>
-  
+
   <div id="container">
       <div id="top">
         <canvas id="sketchpad" width="320" height="392">
@@ -53,7 +40,7 @@
       </div>
     
       <footer id="footer">
-        <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+        <nav id="maintoolbar" class="navbar navbar-default navbar-fixed-bottom" role="navigation">
           <div class="col-xs-9">
             <button type="button" class="btn btn-default" id="btn-pencil">P</button>
             <button type="button" class="btn btn-default" id="btn-colorpicker">C</button>
@@ -112,18 +99,64 @@
   <script type="text/javascript" src="js/toolbar.js"></script>
   <script type="text/javascript" src="http://www.eyecon.ro/bootstrap-slider/js/bootstrap-slider.js"></script>
   <script type="text/javascript" src="js/modernizr.js"></script>
+  <script type="text/javascript" src="js/jquery.hammer.min.js"></script>
 
   <!-- 
       Loosely based on fxosstub: https://github.com/Jaxo/fxosstub
   -->
   
   <script type="text/javascript" charset="utf-8">
+  
+    // detect a mobile device
+    var isMobile = {
+        Android: function() {
+            return navigator.userAgent.match(/Android/i);
+        },
+        BlackBerry: function() {
+            return navigator.userAgent.match(/BlackBerry/i);
+        },
+        iOS: function() {
+            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        Opera: function() {
+            return navigator.userAgent.match(/Opera Mini/i);
+        },
+        Windows: function() {
+            return navigator.userAgent.match(/IEMobile/i);
+        },
+        any: function() {
+            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+        }
+    };
+    
+    //this works only for iOS/Android (not FFOS)    
+    if (isMobile.any()) {
+      // Hammertime release touch
+      var release = document.getElementById('sketchpad');
+      var hammertime_release = Hammer(release).on("release", function(event) {
+          $("#maintoolbar").animate({
+            bottom: "0"
+          }, 300);
+      });
+
+      // Hammertime ontouch
+      var touch = document.getElementById('sketchpad');
+      var hammertime_hold = Hammer(touch).on("touch", function(event) {
+          $("#maintoolbar").animate({
+            bottom: "-100"
+          }, 300);
+      });
+
+      // scroll down nav on IOS
+      window.scrollTo(0, 1);
+    }
+
     
     // Change the Brush Softness
     
     
     // Change the Brush Opacity
-    
+    //get the alpha of the current brush and asjust it
     
     // Change the Brush Stroke
     var BrushChange = function() {

@@ -5,6 +5,13 @@
       context.strokeStyle = '#000'; // i
       context.lineWidth = 1;
     })
+    
+    //Eraser button
+    $("#btn-eraser").click(function(){
+      context.fillStyle = '#fff'; // i
+      context.strokeStyle = '#fff'; // i
+      context.lineWidth = 10;
+    })
 
     // toggle the color picker btn
     var i = 0;
@@ -40,13 +47,6 @@
           }, 300);
       }
     });
-
-    //Eraser button
-    $("#btn-eraser").click(function(){
-      context.fillStyle = '#fff'; // i
-      context.strokeStyle = '#fff'; // i
-      context.lineWidth = 10;
-    })
 
     // toggle the brushsize btn
     var n = 0;
@@ -89,8 +89,25 @@
           bottom: "-20"
         }, 300);
     })
+    // Cancel button
     $("#btn-cancel").click(function(){
       $( "#done-panel" ).animate({
           bottom: "-240"
         }, 300);
     })
+    // Clear drawing
+    $('#btn-new').click(function(){
+      canvas.width = canvas.width;
+      $( "#done-panel" ).animate({
+          bottom: "-240"
+        }, 300);
+    });
+    // Save drawing
+    $('#btn-save').click(function(){
+      var canvas = document.getElementById("sketchpad");
+      window.open(canvas.toDataURL("image/png"));
+      $( "#done-panel" ).animate({
+          bottom: "-240"
+        }, 300);
+    });
+    
