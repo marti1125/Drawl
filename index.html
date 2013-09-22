@@ -56,7 +56,7 @@
           <div class="panel-heading">What do you want to do?</div>
           <div class="panel-body">
             <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-save">Save</button>
-            <button type="button" class="btn btn-default btn-lg btn-block" id="btn-new">New</button>
+            <button type="button" class="btn btn-default btn-lg btn-block" id="btn-new">Clear</button>
             <button type="button" class="btn btn-default btn-lg btn-block" id="btn-cancel">Cancel</button>
           </div>
         </div>
@@ -133,6 +133,9 @@
     
     //this works only for iOS/Android (not FFOS)    
     if (isMobile.any()) {
+      
+      //get current Ypos of toolbar and store it
+      
       // Hammertime release touch
       var release = document.getElementById('sketchpad');
       var hammertime_release = Hammer(release).on("release", function(event) {
@@ -147,6 +150,12 @@
           $("#maintoolbar").animate({
             bottom: "-100"
           }, 300);
+          if (parseInt($("#brushsize.toolbar").css("bottom")) == 64) {
+            $( "#brushsize.toolbar" ).animate({
+                bottom: "-200"
+              }, 300);
+          }
+          //alert($("#brushsize.toolbar").css("bottom"))
       });
 
       // scroll down nav on IOS

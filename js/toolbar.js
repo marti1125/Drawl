@@ -21,30 +21,30 @@
         i = 0;
         n = 0;
         $( "#colorpicker.toolbar" ).animate({
-            bottom: "-40"
-          }, 300);
+            bottom: "-240"
+          }, 200);
       }
       if(i == 1 && n == 1) {
         i = 0;
         n = 0;
         $( "#colorpicker.toolbar" ).animate({
-            bottom: "-40"
-          }, 300);
+            bottom: "-240"
+          }, 200);
       }
       if(i == 0 || n == 1) {
         i = 1;
         $( "#colorpicker.toolbar" ).animate({
             bottom: "64"
-          }, 300);
+          }, 200);
         $( "#brushsize.toolbar" ).animate({
-            bottom: "0"
-          }, 300);
+            bottom: "-200"
+          }, 200);
       } else {
         //alert(i);
         i = 0;
         $( "#colorpicker.toolbar" ).animate({
-            bottom: "-40"
-          }, 300);
+            bottom: "-240"
+          }, 200);
       }
     });
 
@@ -56,30 +56,31 @@
         i = 0;
         n = 0;
         $( "#brushsize.toolbar" ).animate({
-            bottom: "0"
-          }, 300);
+            bottom: "-200"
+          }, 200);
       }
       if(i == 1 && n == 1) {
         //alert(i);
         i = 0;
         n = 0;
         $( "#brushsize.toolbar" ).animate({
-            bottom: "0"
-          }, 300);
+            bottom: "-200"
+          }, 200);
       }
       if(n == 0 || i == 1) {
         n = 1;
+        //alert("test");
         $( "#brushsize.toolbar" ).animate({
             bottom: "64"
-          }, 300);
+          }, 200);
         $( "#colorpicker.toolbar" ).animate({
-            bottom: "-40"
-          }, 300);
+            bottom: "-240"
+          }, 200);
       } else {
         n = 0;
         $( "#brushsize.toolbar" ).animate({
-            bottom: "0"
-          }, 300);
+            bottom: "-200"
+          }, 200);
       }
     });
 
@@ -87,20 +88,20 @@
     $("#btn-done").click(function(){
       $( "#done-panel" ).animate({
           bottom: "-20"
-        }, 300);
+        }, 200);
     })
     // Cancel button
     $("#btn-cancel").click(function(){
       $( "#done-panel" ).animate({
           bottom: "-240"
-        }, 300);
+        }, 200);
     })
     // Clear drawing
     $('#btn-new').click(function(){
       canvas.width = canvas.width;
       $( "#done-panel" ).animate({
           bottom: "-240"
-        }, 300);
+        }, 200);
     });
     // Save drawing
     $('#btn-save').click(function(){
@@ -108,6 +109,6 @@
       window.open(canvas.toDataURL("image/png"));
       $( "#done-panel" ).animate({
           bottom: "-240"
-        }, 300);
+        }, 200);
     });
     
