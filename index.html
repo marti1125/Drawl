@@ -64,7 +64,7 @@
           if(window.navigator.standalone == false){
             // alert("installed home screen!");
             // this is the real UI here
-            $("body").html("<p>Install this app!</p>");
+            //$("body").html("<p>Install this app!</p>");
           } 
 
         }
@@ -178,16 +178,18 @@
     //this works only for iOS/Android   
     if (isMobile.any()) {
       
-
-      
-      //get current Ypos of toolbar and store it
-      
       // Hammertime onRELEASE, move the toolbar back up
       var release = document.getElementById('sketchpad');
       var hammertime_release = Hammer(release).on("release", function(event) {
           $("#maintoolbar").animate({
             bottom: "0"
-          }, 300);
+          }, 200);
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "+=200"
+          }, 200);
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "+=240"
+          }, 200);
       });
 
       // Hammertime onTOUCH, move the toolbar down
@@ -196,14 +198,14 @@
           // move the toolbar down
           $("#maintoolbar").animate({
             bottom: "-100"
-          }, 300);
+          }, 200);
           // move the brushsize toolbar down if it's up
-          if (parseInt($("#brushsize.toolbar").css("bottom")) == 64) {
-            $( "#brushsize.toolbar" ).animate({
-                bottom: "-200"
-              }, 300);
-          }
-          //alert($("#brushsize.toolbar").css("bottom"))
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "-=200"
+          }, 200);
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "-=240"
+          }, 200);
       });
 
     } else {
