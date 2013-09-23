@@ -14,7 +14,7 @@
  -->
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <!-- <link rel="stylesheet" type="text/css" href="css/headers.css"> -->
     <!-- <link rel="stylesheet" type="text/css" href="css/buttons.css"> -->
@@ -131,12 +131,27 @@
         }
     };
     
-    //this works only for iOS/Android (not FFOS)    
+    if (isMobile.iOS()) {
+      
+      // scroll down nav on IOS
+      // window.scrollTo(0, 1);
+
+      if(window.navigator.standalone == false){
+        // alert("installed home screen!");
+        // this is the real UI here
+        $("body").html("install this app!");
+      } 
+      
+    }
+    
+    //this works only for iOS/Android   
     if (isMobile.any()) {
+      
+
       
       //get current Ypos of toolbar and store it
       
-      // Hammertime release touch
+      // Hammertime onRELEASE, move the toolbar back up
       var release = document.getElementById('sketchpad');
       var hammertime_release = Hammer(release).on("release", function(event) {
           $("#maintoolbar").animate({
@@ -144,12 +159,14 @@
           }, 300);
       });
 
-      // Hammertime ontouch
+      // Hammertime onTOUCH, move the toolbar down
       var touch = document.getElementById('sketchpad');
       var hammertime_hold = Hammer(touch).on("touch", function(event) {
+          // move the toolbar down
           $("#maintoolbar").animate({
             bottom: "-100"
           }, 300);
+          // move the brushsize toolbar down if it's up
           if (parseInt($("#brushsize.toolbar").css("bottom")) == 64) {
             $( "#brushsize.toolbar" ).animate({
                 bottom: "-200"
@@ -158,8 +175,21 @@
           //alert($("#brushsize.toolbar").css("bottom"))
       });
 
-      // scroll down nav on IOS
-      window.scrollTo(0, 1);
+    } else {
+      
+      //touch events for FFOS
+      canvas.addEventListener('touchstart',function(event){
+        $( "#maintoolbar" ).animate({
+            top: "500"
+          }, 300);
+      }, false);
+
+      canvas.addEventListener('touchend',function(event){
+        $( "#maintoolbar" ).animate({
+            top: "396"
+          }, 300);
+      }, false);
+      
     }
 
     // move toolbar up and down by tapping it
