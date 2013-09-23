@@ -34,6 +34,11 @@
     <script type="text/javascript" charset="utf-8">
      $( document ).ready(function() {
      
+        // if loads on a browser...
+        if ($( window ).width() >= 320 ) {
+          $("body").html("This app only works on a mobile device!  Load this URL on your mobile device!");
+        }
+     
         // detect a mobile device
         var isMobile = {
             Android: function() {
@@ -57,15 +62,20 @@
         };
 
         if (isMobile.iOS()) {
+          
+          $("#container").hide();
 
           // scroll down nav on IOS
           // window.scrollTo(0, 1);
 
-          if(window.navigator.standalone == false){
+          if(window.navigator.standalone == true){
             // alert("installed home screen!");
             // this is the real UI here
-            //$("body").html("<p>Install this app!</p>");
-          } 
+            
+            $("#container").show();
+          } else {
+            $("body").html("<p>Install this app!</p>");
+          }
 
         }
       
