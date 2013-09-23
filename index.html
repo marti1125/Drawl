@@ -15,6 +15,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <!-- <link rel="stylesheet" type="text/css" href="css/headers.css"> -->
     <!-- <link rel="stylesheet" type="text/css" href="css/buttons.css"> -->
@@ -24,9 +26,51 @@
     <link rel="stylesheet" type="text/css" href="css/styles.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/slider.css" rel="stylesheet">
     
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    
     <title>Drawl</title>
+    
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    
+    
+    <script type="text/javascript" charset="utf-8">
+     $( document ).ready(function() {
+     
+        // detect a mobile device
+        var isMobile = {
+            Android: function() {
+                return navigator.userAgent.match(/Android/i);
+            },
+            BlackBerry: function() {
+                return navigator.userAgent.match(/BlackBerry/i);
+            },
+            iOS: function() {
+                return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+            },
+            Opera: function() {
+                return navigator.userAgent.match(/Opera Mini/i);
+            },
+            Windows: function() {
+                return navigator.userAgent.match(/IEMobile/i);
+            },
+            any: function() {
+                return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+            }
+        };
+
+        if (isMobile.iOS()) {
+
+          // scroll down nav on IOS
+          // window.scrollTo(0, 1);
+
+          if(window.navigator.standalone == false){
+            // alert("installed home screen!");
+            // this is the real UI here
+            $("body").html("<p>Install this app!</p>");
+          } 
+
+        }
+      
+      });
+    </script>
     
 </head>
 
@@ -96,7 +140,6 @@
   <script type="text/javascript" src="js/base.js"></script>
   <script type="text/javascript" src="js/webapp.js"></script>
   <script type="text/javascript" src="js/offline.js"></script>
-  <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
   <script type="text/javascript" src="js/draw.js"></script>
   <script type="text/javascript" src="js/toolbar.js"></script>
   <script type="text/javascript" src="js/bootstrap-slider.js"></script>
@@ -130,19 +173,7 @@
             return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
         }
     };
-    
-    if (isMobile.iOS()) {
-      
-      // scroll down nav on IOS
-      // window.scrollTo(0, 1);
 
-      if(window.navigator.standalone == false){
-        // alert("installed home screen!");
-        // this is the real UI here
-        $("body").html("install this app!");
-      } 
-      
-    }
     
     //this works only for iOS/Android   
     if (isMobile.any()) {
