@@ -103,10 +103,37 @@
           bottom: "-240"
         }, 200);
     });
+    
+    document.getElementById("foz").addEventListener("click", function(evt) {
+       var canvas = document.getElementById("sketchpad"); // get the canvas
+       var image = canvas.toDataURL("image/png"); // convert canvas to an image, .png
+       
+       var a = document.createElement('a');
+       a.setAttribute("href", image);
+       a.setAttribute("target", "_blank");
+
+       var dispatch = document.createEvent("HTMLEvents")
+       dispatch.initEvent("click", true, true);
+       a.dispatchEvent(dispatch);
+    });
+    
     // Save drawing
     $('#btn-save').click(function(){
-      var canvas = document.getElementById("sketchpad");
-      window.open(canvas.toDataURL("image/png"));
+      
+      var canvas = document.getElementById("sketchpad"); // get the canvas
+      var image = canvas.toDataURL("image/png"); // convert canvas to an image, .png
+      //window.open(image); // open the png in a new window with a hash
+      //window.open('url', 'window name', 'window settings')
+      //window.open('http://www.google.com');
+      //document.getElementById("btn-save").href = canvas.toDataURL("image/png");
+      
+      //send the image to a server
+      
+      //document.getElementById("btn-save").href = canvas.toDataURL("image/png");
+      
+      //open up modal with the canvas on it
+      //window.open(canvas.toDataURL("image/png"));
+      //$(w.document.body).html(canvas.toDataURL("image/png"));
       $( "#done-panel" ).animate({
           bottom: "-240"
         }, 200);

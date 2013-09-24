@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="css/grid.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/styles.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/slider.css" rel="stylesheet">
+    <link rel="apple-touch-startup-image" href="/startup.png">
     
     <title>Drawl</title>
     
@@ -63,7 +64,7 @@
 
         if (isMobile.iOS()) {
           
-          $("#container").hide();
+          //$("#container").hide();
 
           // scroll down nav on IOS
           // window.scrollTo(0, 1);
@@ -74,7 +75,7 @@
             
             $("#container").show();
           } else {
-            $("body").html("<p>Install this app!</p>");
+            //$("body").html("<p>Install this app!</p>");
           }
 
         }
@@ -85,6 +86,8 @@
 </head>
 
 <body>
+  
+  
 
   <div id="container">
       <div id="top">
@@ -109,9 +112,11 @@
         <div id="done-panel" class="panel panel-default">
           <div class="panel-heading">What do you want to do?</div>
           <div class="panel-body">
-            <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-save">Save</button>
+            <div id="foz">div with window.open</a>
+            <!-- <a href="" download="my-image" target="_blank" id="btn-save" data-href="">Save Image1</a> -->
+            <!-- <a type="button" class="btn btn-primary btn-lg btn-block" id="btn-save" data-toggle="modal" href="#myModal">Preview</a> -->
             <button type="button" class="btn btn-default btn-lg btn-block" id="btn-new">Clear</button>
-            <button type="button" class="btn btn-default btn-lg btn-block" id="btn-cancel">Cancel</button>
+            <a type="button" class="btn btn-default btn-lg btn-block" id="btn-cancel" href="http://www.google.com">Cancel</a>
           </div>
         </div>
 
@@ -141,6 +146,25 @@
             </div>
         </div>
         
+        <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                  <img src="" id="theimage">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+        
         
       </footer>
       
@@ -155,6 +179,7 @@
   <script type="text/javascript" src="js/bootstrap-slider.js"></script>
   <script type="text/javascript" src="js/modernizr.js"></script>
   <script type="text/javascript" src="js/jquery.hammer.min.js"></script>
+  <script type="text/javascript" src="js/modal.js"></script>
 
   <!-- 
       Loosely based on fxosstub: https://github.com/Jaxo/fxosstub
