@@ -1,3 +1,16 @@
+    // vibrate
+    // Vibrate for one second 
+    navigator.vibrate(1000);
+
+    // Vibration pattern [vibrationTime, pause,…] 
+    navigator.vibrate([200, 100, 200, 100]);
+
+    // Vibrate for 5 seconds 
+    navigator.vibrate(5000);
+
+    // Turn off vibration 
+    navigator.vibrate(0);
+
     // get the canvas element and its context
     var canvas = document.getElementById('sketchpad');
     var context = canvas.getContext('2d');

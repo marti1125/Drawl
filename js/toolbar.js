@@ -122,13 +122,17 @@
       
       var canvas = document.getElementById("sketchpad"); // get the canvas
       var image = canvas.toDataURL("image/png"); // convert canvas to an image, .png
-      //window.open(image); // open the png in a new window with a hash
+      window.open(image);
+      
+      if(isMobile.iOS()) {
+        //send the image to a server
+        window.open(image); // open the png in a new window with a hash
+      } else {
+        window.open(image); // open the png in a new window with a hash
+      }
       //window.open('url', 'window name', 'window settings')
       //window.open('http://www.google.com');
       //document.getElementById("btn-save").href = canvas.toDataURL("image/png");
-      
-      //send the image to a server
-      
       //document.getElementById("btn-save").href = canvas.toDataURL("image/png");
       
       //open up modal with the canvas on it

@@ -112,11 +112,9 @@
         <div id="done-panel" class="panel panel-default">
           <div class="panel-heading">What do you want to do?</div>
           <div class="panel-body">
-            <div id="foz">div with window.open</a>
-            <!-- <a href="" download="my-image" target="_blank" id="btn-save" data-href="">Save Image1</a> -->
-            <!-- <a type="button" class="btn btn-primary btn-lg btn-block" id="btn-save" data-toggle="modal" href="#myModal">Preview</a> -->
+            <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-save">Save</button>
             <button type="button" class="btn btn-default btn-lg btn-block" id="btn-new">Clear</button>
-            <a type="button" class="btn btn-default btn-lg btn-block" id="btn-cancel" href="http://www.google.com">Cancel</a>
+            <a type="button" class="btn btn-default btn-lg btn-block" id="btn-cancel" href="">Cancel</a>
           </div>
         </div>
 
@@ -249,13 +247,26 @@
       canvas.addEventListener('touchstart',function(event){
         $( "#maintoolbar" ).animate({
             top: "500"
-          }, 300);
+          }, 200);
+        $( "#brushsize.toolbar" ).animate({
+            bottom: "-=200"
+        }, 200);
+        $( "#colorpicker.toolbar" ).animate({
+            bottom: "-=240"
+        }, 200);  
       }, false);
 
       canvas.addEventListener('touchend',function(event){
         $( "#maintoolbar" ).animate({
             top: "396"
-          }, 300);
+          }, 200);
+        // move the brushsize toolbar down if it's up
+        $( "#brushsize.toolbar" ).animate({
+            bottom: "+=200"
+        }, 200);
+        $( "#colorpicker.toolbar" ).animate({
+            bottom: "+=240"
+        }, 200);
       }, false);
       
     }
