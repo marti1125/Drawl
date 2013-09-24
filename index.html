@@ -14,7 +14,7 @@
  -->
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+    <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     
     <link rel="stylesheet" type="text/css" href="css/base.css">
@@ -34,10 +34,12 @@
     
     <script type="text/javascript" charset="utf-8">
      $( document ).ready(function() {
+       
+        var portraitLock = screen.mozLockOrientation("portrait");
      
         // if loads on a browser...
         if ($( window ).width() > 480 ) {
-          $("body").html("This app only works on a mobile device!  Load this URL on your mobile device!");
+          //$("body").html("This app only works on a mobile device!  Load this URL on your mobile device!");
         }
      
         // detect a mobile device
@@ -79,6 +81,26 @@
           }
 
         }
+        
+        // FFOS specific
+        if ($( window ).width() > 320 ) {
+          //screensize large
+          $("#sketchpad").attr("width", "640");
+          $("#sketchpad").attr("height", "784");
+          alert("large");
+          //$("body").html("This app only works on a mobile device!  Load this URL on your mobile device!");
+        } else {
+          //screensize small
+          //alert("small");
+          $("#sketchpad").attr("width", "320");
+          $("#sketchpad").attr("height", "392");
+        }
+        // if screensize is smaller
+        // then canvas width 320
+        // and height 392
+        // also reset the toolbar size to be @2x
+        // and the buttons to be at @2x
+        // and the up and down height animations
       
       });
     </script>
@@ -178,12 +200,23 @@
   <script type="text/javascript" src="js/modernizr.js"></script>
   <script type="text/javascript" src="js/jquery.hammer.min.js"></script>
   <script type="text/javascript" src="js/modal.js"></script>
-
+  
   <!-- 
       Loosely based on fxosstub: https://github.com/Jaxo/fxosstub
   -->
   
   <script type="text/javascript" charset="utf-8">
+    
+    // Save button
+    $('#btn-save').click(function(){
+      //alert("save");
+      var canvas = document.getElementById("sketchpad"); // get the canvas
+      var image = canvas.toDataURL("image/png"); // convert canvas to an image, .png
+      window.open(image);
+      $( "#done-panel" ).animate({
+          bottom: "-240"
+        }, 200);
+    });
   
     // detect a mobile device
     var isMobile = {
