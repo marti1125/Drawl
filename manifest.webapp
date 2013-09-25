@@ -20,6 +20,9 @@
         "desktop-notification": {
             "description" : "To show notifications"
         },
+        "device-storage:pictures": {
+            "access": "readwrite"
+        },
         "geolocation": {
             "description" : "Marking out user location"
         }
