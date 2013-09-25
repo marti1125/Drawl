@@ -109,9 +109,7 @@
 
 <body>
   
-  <a href="http://upload.wikimedia.org/wikipedia/commons/2/26/YellowLabradorLooking_new.jpg" download="image.png">download</a>
-  <div id="debugFilenameConsole"></div>
-  <img id="image-to-share" src="images/logo64.png" alt="">
+  <img id="image-to-share" src="images/logo64.png" alt=""> 
 
   <div id="container">
       <div id="top">
@@ -215,47 +213,6 @@
   -->
   
   <script type="text/javascript" charset="utf-8">
-    
-    // Save button
-    $('#btn-save').click(function(){
-      
-      var pictures = navigator.getDeviceStorage("pictures");
-      var file   = new Blob(["This is a text file."], {type: "text/plain"});
-
-      var request = pictures.addNamed(file, "image.png");
-
-      request.onsuccess = function () {
-        var name = this.result;
-        console.log('File "' + name + '" successfully wrote on the sdcard storage area');
-      }
-
-      // An error typically occur if a file with the same name already exist
-      request.onerror = function () {
-        console.warn('Unable to write the file: ' + this.error);
-      }
-
-      //var canvas = document.getElementById("sketchpad"); // get the canvas
-      //var image = canvas.toDataURL("image/png"); // convert canvas to an image, .png
-      
-      //var ajax = new XMLHttpRequest();
-      //ajax.open("POST",'script.php',false);
-      //ajax.setRequestHeader('Content-Type', 'application/upload');
-      //ajax.onreadystatechange=function() {
-      //if (ajax.readyState == 4) {
-        // Write out the filename.
-        //$("img#image-to-share").attr("src","images/testing-image.png");
-        //document.getElementById("debugFilenameConsole").innerHTML="Saved as<br><a target='_blank' href='images/testing-image.png'>update</a>";
-        //}
-      //}
-      //ajax.send(image);
-      
-      //update image from server
-      //$("img#image-to-share").attr("src",image);
-      
-      $( "#done-panel" ).animate({
-          bottom: "-240"
-        }, 200);
-    });
   
     // detect a mobile device
     var isMobile = {
@@ -278,6 +235,44 @@
             return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
         }
     };
+    
+    // Save button
+    $('#btn-save').click(function(){
+
+      var canvas = document.getElementById("sketchpad"); // get the canvas
+      var image = canvas.toDataURL("image/png"); // convert canvas to an image, .png
+      //window.open(image);
+      
+      var storage = navigator.getDeviceStorage("pictures");
+      var file   = new Blob([image], {type: "image/*"});
+      var request = storage.addNamed(file, "my-file.png");
+      console.log(request);
+      
+      //$("#image-to-share").attr("src", image);
+      
+      //var sdcard = navigator.getDeviceStorage("sdcard");
+      //console.log(sdcard);
+
+      if (isMobile.iOS()) {
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST",'script.php',false);
+        ajax.setRequestHeader('Content-Type', 'application/upload');
+        //ajax.onreadystatechange=function() {
+        //if (ajax.readyState == 4) {
+          //Write out the filename.
+          //$("img#image-to-share").attr("src","images/testing-image.png");
+          //document.getElementById("debugFilenameConsole").innerHTML="Saved as<br><a target='_blank' href='images/testing-image.png'>update</a>";
+          //}
+        //}
+        ajax.send(image);
+      }
+            
+      //$( "#done-panel" ).animate({
+          //bottom: "-240"
+      //}, 200);
+    });
+  
+
 
     
     //this works only for iOS/Android   

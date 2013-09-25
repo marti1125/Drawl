@@ -110,8 +110,7 @@ header.show-install h1 {
 }
 
 #image-to-share {
-    //display: none;
-    width: 20%;
+    display: none;
 }
 
 /*footer {

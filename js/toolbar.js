@@ -104,26 +104,14 @@
           bottom: "-240"
         }, 200);
     });
-    
-    document.getElementById("foz").addEventListener("click", function(evt) {
-       var canvas = document.getElementById("sketchpad"); // get the canvas
-       var image = canvas.toDataURL("image/png"); // convert canvas to an image, .png
-       
-       var a = document.createElement('a');
-       a.setAttribute("href", image);
-       a.setAttribute("target", "_blank");
 
-       var dispatch = document.createEvent("HTMLEvents")
-       dispatch.initEvent("click", true, true);
-       a.dispatchEvent(dispatch);
-    });
     
     // Save drawing
-    $('#btn-save').click(function(){
-      alert("save");
-      var canvas = document.getElementById("sketchpad"); // get the canvas
-      var image = canvas.toDataURL("image/png"); // convert canvas to an image, .png
-      window.open(image);
+    //$('#btn-save').click(function(){
+      //alert("save");
+      //var canvas = document.getElementById("sketchpad"); // get the canvas
+      //var image = canvas.toDataURL("image/png"); // convert canvas to an image, .png
+      //window.open(image);
       
       //if(isMobile.iOS()) {
         //send the image to a server
@@ -139,8 +127,8 @@
       //open up modal with the canvas on it
       //window.open(canvas.toDataURL("image/png"));
       //$(w.document.body).html(canvas.toDataURL("image/png"));
-      $( "#done-panel" ).animate({
-          bottom: "-240"
-        }, 200);
-    });
+      //$( "#done-panel" ).animate({
+          //bottom: "-240"
+        //}, 200);
+    //});
     
