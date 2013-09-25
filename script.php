@@ -26,7 +26,7 @@ if (isset($GLOBALS["HTTP_RAW_POST_DATA"]))
     //fclose( $fp );
     
 	$filedirectory = 'images/';
-	$userID = 'testing';
+	$userID = 'new';
 	$filename ='-image.png';
 	
     $fp = fopen( $filedirectory.$userID.$filename, 'wb' );
