@@ -1,20 +1,26 @@
-    // vibrate
-    // Vibrate for one second 
-    navigator.vibrate(1000);
-
-    // Vibration pattern [vibrationTime, pause,…] 
-    navigator.vibrate([200, 100, 200, 100]);
-
-    // Vibrate for 5 seconds 
-    navigator.vibrate(5000);
-
-    // Turn off vibration 
-    navigator.vibrate(0);
-
     // get the canvas element and its context
     var canvas = document.getElementById('sketchpad');
     var context = canvas.getContext('2d');
-
+    
+    // Square Brush
+    $("#squarebrush").click(function(){
+      context.lineCap = 'square';
+    });
+    
+    // Round Brush
+    $("#roundbrush").click(function(){
+      context.lineCap = 'round';
+    });
+    
+    // Add a blur/soft brush
+    $("#spraycan").click(function(){
+      context.shadowColor = context.fillStyle;
+      context.shadowBlur = 20;
+      context.shadowOffsetX = 15;
+      context.shadowOffsetY = 15;
+      //hide brush
+      //context.fill();
+    });
     
     // Colors
     $("#color-zero").click(function(){

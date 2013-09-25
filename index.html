@@ -122,6 +122,7 @@
         <nav id="maintoolbar" class="navbar navbar-default navbar-fixed-bottom" role="navigation">
           <div class="col-xs-9">
             <button type="button" class="btn btn-default" id="btn-pencil">P</button>
+            <!-- <button type="button" class="btn btn-default"id="spraycan">Spr</button> -->
             <button type="button" class="btn btn-default" id="btn-colorpicker">C</button>
             <button type="button" class="btn btn-default" id="btn-eraser">E</button>
             <button type="button" class="btn btn-default" id="btn-brushsize">S</button>
@@ -134,7 +135,9 @@
         <div id="done-panel" class="panel panel-default">
           <div class="panel-heading">What do you want to do?</div>
           <div class="panel-body">
-            <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-save">Save</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block" id="share-image">Share</button>
+            <img id="image-to-share" src="images/logo64.png" alt="">
+            <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-save2">Save</button>
             <button type="button" class="btn btn-default btn-lg btn-block" id="btn-new">Clear</button>
             <a type="button" class="btn btn-default btn-lg btn-block" id="btn-cancel" href="">Cancel</a>
           </div>
@@ -153,10 +156,15 @@
             </div>
         </div>
 
+        <!-- Brush adjustments -->
         <div class="toolbar" id="brushsize">
             <div class="col-xs-12">
               <!-- <p>Brush size</p> -->
               <div id="brushStrokeSize" class="slider slider-horizontal" style="width: 240px;"></div>
+              <p>
+                <button class="btn btn-default" id="roundbrush">r</button>
+                <button class="btn btn-default"id="squarebrush">s</button>
+              </p>
 
               <!-- <p>Brush softness</p> -->
               <!-- <div id="brushSoftness" class="slider slider-horizontal" style="width: 140px;"></div> -->
@@ -206,6 +214,26 @@
   -->
   
   <script type="text/javascript" charset="utf-8">
+  
+    // Save button
+    $('#btn-save2').click(function(){
+      //alert("save");
+      var canvas = document.getElementById("sketchpad"); // get the canvas
+      var context = canvas.getContext('2d');
+      var image = canvas.toDataURL("application/octet-stream"); // convert canvas to an image, .png
+      var myImage = new Image();
+      myImage.src = image;
+      context.drawImage(myImage, 0, 0);
+      //$('#thumbnail_list').append($('<a/>', { src : dataURL }).addClass('image'));
+      //var url = document.getElementById('data').value = canvas.toDataURL();
+      //document.getElementById('echo').src = url;
+      document.getElementById('image-to-share').src = image;
+      //document.write('<img src="'+image+'"/>');
+      //window.open(image);
+      // $( "#done-panel" ).animate({
+      //     bottom: "-240"
+      //   }, 200);
+    });
     
     // Save button
     $('#btn-save').click(function(){
