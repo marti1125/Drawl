@@ -104,7 +104,7 @@
           		}
         }
         ajax.send(image);
-      }
+      //}
       
       $( "#done-panel" ).animate({
           bottom: "-20"
