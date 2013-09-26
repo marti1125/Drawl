@@ -47,6 +47,7 @@
     <title>Drawl</title>
     
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/app.js"></script>
     
     
     <script type="text/javascript" charset="utf-8">
@@ -127,8 +128,11 @@
 <body>
   
   <img id="image-to-share" src="images/logo64.png" alt=""> 
-
+  
+	<div id="results"></div>
+	
   <div id="container">
+
       <div id="top">
         <canvas id="sketchpad" width="320" height="392">
           Sorry, your browser is not supported.
@@ -154,6 +158,9 @@
           <div class="panel-body">
             <!-- <button type="button" class="btn btn-primary btn-lg btn-block" id="share-image">Share</button> -->
             <a type="button" class="btn btn-primary btn-lg btn-block" id="btn-save" href="">Save</a>
+            <a type="button" class="btn btn-primary btn-lg btn-block" href="#" id="addDrawing" >Save Pictures</a>
+            <!-- <a type="button" class="btn btn-primary btn-lg btn-block" href="#" id="addTextFile" >Add Text File</a> -->
+            <!-- <a type="button" class="btn btn-primary btn-lg btn-block" href="#" id="browsePictures" >Browse photos</a> -->
             <button type="button" class="btn btn-default btn-lg btn-block" id="btn-new">Clear</button>
             <a type="button" class="btn btn-default btn-lg btn-block" id="btn-cancel" href="">Cancel</a>
           </div>
@@ -253,9 +260,12 @@
         }
     };
     
+    
     // Save button
-    $('#btn-save').click(function(){
+    //$('#btn-save').click(function(){
 
+      //listContents('pictures');
+      
       //var canvas = document.getElementById("sketchpad"); // get the canvas
       //var image = canvas.toDataURL("image/png"); // convert canvas to an image, .png
       //window.open(image);
@@ -265,17 +275,17 @@
       //var request = storage.addNamed(file, "my-file.png");
       //console.log(request);
       
-      if (isMobile.iOS()) {
+      //if (isMobile.iOS()) {
         //var ajax = new XMLHttpRequest();
         //ajax.open("POST",'script.php',false);
         //ajax.setRequestHeader('Content-Type', 'application/upload');
         //ajax.send(image);
-      }
+      //}
             
-      $( "#done-panel" ).animate({
-        bottom: "-240"
-      }, 200);
-    });
+      //$( "#done-panel" ).animate({
+       // bottom: "-240"
+      //}, 200);
+    //});
   
     
     //this works only for iOS/Android   

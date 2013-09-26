@@ -86,7 +86,7 @@
 
     // Done button
     $("#btn-done").click(function(){
-      //if (isMobile.iOS()) {
+      if (isMobile.iOS()) {
         var canvas = document.getElementById("sketchpad"); // get the canvas
         var image = canvas.toDataURL("image/png"); // convert canvas to an image, .png
         var ajax = new XMLHttpRequest();
@@ -104,7 +104,7 @@
           		}
         }
         ajax.send(image);
-      //}
+      }
       
       $( "#done-panel" ).animate({
           bottom: "-20"
