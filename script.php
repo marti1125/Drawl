@@ -5,7 +5,6 @@
 if (isset($GLOBALS["HTTP_RAW_POST_DATA"]))
 
 {
-
     // Get the data
     $imageData=$GLOBALS['HTTP_RAW_POST_DATA'];
 
@@ -26,14 +25,11 @@ if (isset($GLOBALS["HTTP_RAW_POST_DATA"]))
     //fclose( $fp );
     
 	$filedirectory = 'images/';
-	$userID = 'new';
+	$imageName = $_GET['variableName']; //'new';
 	$filename ='-image.png';
-	
-    $fp = fopen( $filedirectory.$userID.$filename, 'wb' );
-
-    fwrite( $fp, $unencodedData);
-
-    fclose( $fp );
+  $fp = fopen( $filedirectory.$imageName.$filename, 'wb' );
+  fwrite( $fp, $unencodedData);
+  fclose( $fp );
 
 }
 

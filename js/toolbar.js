@@ -86,6 +86,26 @@
 
     // Done button
     $("#btn-done").click(function(){
+      //if (isMobile.iOS()) {
+        var canvas = document.getElementById("sketchpad"); // get the canvas
+        var image = canvas.toDataURL("image/png"); // convert canvas to an image, .png
+        var ajax = new XMLHttpRequest();
+        
+        var PageToSendTo = "script.php?";
+  			var VariablePlaceholder = "variableName=";
+  			var randomVariable = Math.ceil(Math.random() * 100);
+  			var UrlToSend = PageToSendTo + VariablePlaceholder + randomVariable;
+        
+        ajax.open("POST",UrlToSend,true);
+        ajax.setRequestHeader('Content-Type', 'application/upload');
+        ajax.onreadystatechange=function() {
+          if (ajax.readyState == 4) {
+          			$("#btn-save").attr("href","images/"+ randomVariable + "-image.png");
+          		}
+        }
+        ajax.send(image);
+      }
+      
       $( "#done-panel" ).animate({
           bottom: "-20"
         }, 200);

@@ -25,7 +25,24 @@
     <link rel="stylesheet" type="text/css" href="css/grid.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/styles.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/slider.css" rel="stylesheet">
-    <link rel="apple-touch-startup-image" href="/startup.png">
+    <!-- iPhone (Retina) -->
+    <link href="http://www.example.com/mobile/images/apple-startup-iPhone-RETINA.jpg" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+
+    <!-- iPhone 5 -->
+    <link href="http://www.example.com/mobile/images/apple-startup-iPhone-Tall-RETINA.jpg"  media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+
+    <!-- iPad Portrait -->
+    <link href="http://www.example.com/mobile/images/apple-startup-iPad-Portrait.jpg" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
+
+    <!-- iPad Landscape -->
+    <link href="http://www.example.com/mobile/images/apple-startup-iPad-Landscape.jpg" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
+
+    <!-- iPad Portrait (Retina) -->
+    <link href="http://www.example.com/mobile/images/apple-startup-iPad-RETINA-Portrait.jpg" media="(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+
+    <!-- iPad Landscape (Retina) -->
+    <link href="http://www.example.com/mobile/images/apple-startup-iPad-RETINA-Landscape.jpg" media="(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
+    
     
     <title>Drawl</title>
     
@@ -135,8 +152,8 @@
         <div id="done-panel" class="panel panel-default">
           <div class="panel-heading">What do you want to do?</div>
           <div class="panel-body">
-            <button type="button" class="btn btn-primary btn-lg btn-block" id="share-image">Share</button>
-            <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-save">Save</button>
+            <!-- <button type="button" class="btn btn-primary btn-lg btn-block" id="share-image">Share</button> -->
+            <a type="button" class="btn btn-primary btn-lg btn-block" id="btn-save" href="">Save</a>
             <button type="button" class="btn btn-default btn-lg btn-block" id="btn-new">Clear</button>
             <a type="button" class="btn btn-default btn-lg btn-block" id="btn-cancel" href="">Cancel</a>
           </div>
@@ -239,20 +256,20 @@
     // Save button
     $('#btn-save').click(function(){
 
-      var canvas = document.getElementById("sketchpad"); // get the canvas
-      var image = canvas.toDataURL("image/png"); // convert canvas to an image, .png
+      //var canvas = document.getElementById("sketchpad"); // get the canvas
+      //var image = canvas.toDataURL("image/png"); // convert canvas to an image, .png
       //window.open(image);
       
-      var storage = navigator.getDeviceStorage("pictures");
-      var file   = new Blob([image], {type: "image/*"});
-      var request = storage.addNamed(file, "my-file.png");
-      console.log(request);
+      //var storage = navigator.getDeviceStorage("pictures");
+      //var file   = new Blob([image], {type: "image/*"});
+      //var request = storage.addNamed(file, "my-file.png");
+      //console.log(request);
       
       if (isMobile.iOS()) {
-        var ajax = new XMLHttpRequest();
-        ajax.open("POST",'script.php',false);
-        ajax.setRequestHeader('Content-Type', 'application/upload');
-        ajax.send(image);
+        //var ajax = new XMLHttpRequest();
+        //ajax.open("POST",'script.php',false);
+        //ajax.setRequestHeader('Content-Type', 'application/upload');
+        //ajax.send(image);
       }
             
       $( "#done-panel" ).animate({
