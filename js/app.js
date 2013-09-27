@@ -37,16 +37,14 @@ function addTextFile() {
 }
 
 function addDrawing() {
+  
+      //based on this:
+      //http://stackoverflow.com/questions/17332071/trying-to-save-canvas-png-data-url-to-disk-with-html5-filesystem-but-when-i-ret
+      //https://developer.mozilla.org/en-US/docs/WebAPI/Device_Storage#Add_a_file
+  
       var pictures = navigator.getDeviceStorage("pictures");
       // don't test on simulator, doesnt work.   and need to unplug the device to acutally test
       var maincanvas = document.getElementById("sketchpad"); // get the canvas
-      //var dataURL = maincanvas.toDataURL();
-
-      //var canvas = document.createElement("canvas");
-      //canvas.width = canvas.height = 600;
-
-      //canvas.getContext("2d").fillRect(20, 20, 20, 20);
-
       var dataURL = maincanvas.toDataURL( "image/png" );
       var data = atob( dataURL.substring( "data:image/png;base64,".length ) ),
           asArray = new Uint8Array(data.length);
@@ -55,11 +53,8 @@ function addDrawing() {
           asArray[i] = data.charCodeAt(i);    
       }
 
-		  //var pictures = navigator.getDeviceStorage("pictures");
       var photofile   = new Blob( [ asArray.buffer ], {type: "image/png"} );
-      
-      var mainphoto = pictures.addNamed(photofile, "my-drawings6.png");
-
+      var mainphoto = pictures.addNamed(photofile, "DCIM/MISC/my-drawings6.png");
       request.onsuccess = function () {
         var nameofimage = this.mainphoto;
         alert('File "' + nameofimage + '" successfully wrote on the pictures');
