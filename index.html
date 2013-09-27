@@ -105,7 +105,7 @@
           //screensize large
           $("#sketchpad").attr("width", "640");
           $("#sketchpad").attr("height", "784");
-          alert("large");
+          //alert("large");
           //$("body").html("This app only works on a mobile device!  Load this URL on your mobile device!");
         } else {
           //screensize small
@@ -126,10 +126,6 @@
 </head>
 
 <body>
-  
-  <img id="image-to-share" src="images/logo64.png" alt=""> 
-  
-	<div id="results"></div>
 	
   <div id="container">
 
@@ -156,11 +152,7 @@
         <div id="done-panel" class="panel panel-default">
           <div class="panel-heading">What do you want to do?</div>
           <div class="panel-body">
-            <!-- <button type="button" class="btn btn-primary btn-lg btn-block" id="share-image">Share</button> -->
-            <a type="button" class="btn btn-primary btn-lg btn-block" id="btn-save" href="">Save</a>
-            <a type="button" class="btn btn-primary btn-lg btn-block" href="#" id="addDrawing" >Save Pictures</a>
-            <!-- <a type="button" class="btn btn-primary btn-lg btn-block" href="#" id="addTextFile" >Add Text File</a> -->
-            <!-- <a type="button" class="btn btn-primary btn-lg btn-block" href="#" id="browsePictures" >Browse photos</a> -->
+            <a type="button" class="btn btn-primary btn-lg btn-block" href="#" id="addDrawing" >Save</a>
             <button type="button" class="btn btn-default btn-lg btn-block" id="btn-new">Clear</button>
             <a type="button" class="btn btn-default btn-lg btn-block" id="btn-cancel" href="">Cancel</a>
           </div>
@@ -323,31 +315,63 @@
 
     } else {
       
-      //touch events for FFOS
-      canvas.addEventListener('touchstart',function(event){
-        $( "#maintoolbar" ).animate({
-            top: "500"
+      // FFOS specific
+      if ($( window ).width() > 320 ) {
+        //screensize large
+        //touch events for FFOS
+        canvas.addEventListener('touchstart',function(event){
+          $( "#maintoolbar" ).animate({
+              bottom: "-80"
+            }, 200);
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "-=200"
           }, 200);
-        $( "#brushsize.toolbar" ).animate({
-            bottom: "-=200"
-        }, 200);
-        $( "#colorpicker.toolbar" ).animate({
-            bottom: "-=240"
-        }, 200);  
-      }, false);
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "-=240"
+          }, 200);  
+        }, false);
 
-      canvas.addEventListener('touchend',function(event){
-        $( "#maintoolbar" ).animate({
-            top: "396"
+        canvas.addEventListener('touchend',function(event){
+          $( "#maintoolbar" ).animate({
+              bottom: "0"
+            }, 200);
+          // move the brushsize toolbar down if it's up
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "+=200"
           }, 200);
-        // move the brushsize toolbar down if it's up
-        $( "#brushsize.toolbar" ).animate({
-            bottom: "+=200"
-        }, 200);
-        $( "#colorpicker.toolbar" ).animate({
-            bottom: "+=240"
-        }, 200);
-      }, false);
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "+=240"
+          }, 200);
+        }, false);
+
+      } else {
+        //screensize small
+        //touch events for FFOS
+        canvas.addEventListener('touchstart',function(event){
+          $( "#maintoolbar" ).animate({
+              top: "500"
+            }, 200);
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "-=200"
+          }, 200);
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "-=240"
+          }, 200);  
+        }, false);
+
+        canvas.addEventListener('touchend',function(event){
+          $( "#maintoolbar" ).animate({
+              top: "396"
+            }, 200);
+          // move the brushsize toolbar down if it's up
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "+=200"
+          }, 200);
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "+=240"
+          }, 200);
+        }, false);
+      }
       
     }
 

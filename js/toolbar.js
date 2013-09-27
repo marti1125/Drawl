@@ -115,7 +115,7 @@
       $( "#done-panel" ).animate({
           bottom: "-240"
         }, 200);
-      navigator.vibrate(1000);
+      //navigator.vibrate(1000);
     })
     // Clear drawing
     $('#btn-new').click(function(){
