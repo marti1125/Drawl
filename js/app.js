@@ -37,14 +37,28 @@ function addTextFile() {
 }
 
 function addDrawing() {
-      
+      var pictures = navigator.getDeviceStorage("pictures");
       // don't test on simulator, doesnt work.   and need to unplug the device to acutally test
       var maincanvas = document.getElementById("sketchpad"); // get the canvas
-      var canvasurl = maincanvas.toDataURL();
+      //var dataURL = maincanvas.toDataURL();
+
+      //var canvas = document.createElement("canvas");
+      //canvas.width = canvas.height = 600;
+
+      //canvas.getContext("2d").fillRect(20, 20, 20, 20);
+
+      var dataURL = maincanvas.toDataURL( "image/png" );
+      var data = atob( dataURL.substring( "data:image/png;base64,".length ) ),
+          asArray = new Uint8Array(data.length);
+
+      for( var i = 0, len = data.length; i < len; ++i ) {
+          asArray[i] = data.charCodeAt(i);    
+      }
+
+		  //var pictures = navigator.getDeviceStorage("pictures");
+      var photofile   = new Blob( [ asArray.buffer ], {type: "image/png"} );
       
-		  var pictures = navigator.getDeviceStorage("pictures");
-      var photofile   = new Blob(canvasurl, {type: "image/png"});
-      var mainphoto = pictures.addNamed(photofile, "my-drawing.png");
+      var mainphoto = pictures.addNamed(photofile, "my-drawings6.png");
 
       request.onsuccess = function () {
         var nameofimage = this.mainphoto;
