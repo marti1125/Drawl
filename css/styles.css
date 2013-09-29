@@ -3,19 +3,25 @@
   border: 2px solid #000;
 }*/
 
+
+#canvasArea {
+  position: relative;
+}
+
+#sketchpad {
+
+}
+
 #footer {
   background: orange;
   height: 20% !important;
   overflow: hidden;
 }
 
-#canvasArea {
-  position: relative;
+#maintoolbar {
+  background: rgba(0,0,0,0.4);
 }
-#imageView {
-  border: 1px solid black;
-  height: 380px;
-}
+
 .toolbar {
   background: rgba(0,0,0,0.4);
   position: fixed;
