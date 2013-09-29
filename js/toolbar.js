@@ -1,8 +1,11 @@
+
+    var newBrushOpacity = 0.1; // change this value on the slider
+
     // Pencil button
     $("#btn-pencil").click(function(){
       //highlight this button
-      context.fillStyle = '#000'; // i
-      context.strokeStyle = '#000'; // i
+      context.fillStyle = 'rgba(0,0,0,' + newBrushOpacity + ')'; // i
+      context.strokeStyle = 'rgba(0,0,0,' + newBrushOpacity + ')'; // i
       context.lineWidth = 1;
     })
 
@@ -138,6 +141,8 @@
           bottom: "-240"
         }, 200);
 		});
+
+		// undo button
 
 
     // Save drawing

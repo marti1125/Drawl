@@ -255,34 +255,6 @@
         }
     };
 
-
-    // Save button
-    //$('#btn-save').click(function(){
-
-      //listContents('pictures');
-
-      //var canvas = document.getElementById("sketchpad"); // get the canvas
-      //var image = canvas.toDataURL("image/png"); // convert canvas to an image, .png
-      //window.open(image);
-
-      //var storage = navigator.getDeviceStorage("pictures");
-      //var file   = new Blob([image], {type: "image/*"});
-      //var request = storage.addNamed(file, "my-file.png");
-      //console.log(request);
-
-      //if (isMobile.iOS()) {
-        //var ajax = new XMLHttpRequest();
-        //ajax.open("POST",'script.php',false);
-        //ajax.setRequestHeader('Content-Type', 'application/upload');
-        //ajax.send(image);
-      //}
-
-      //$( "#done-panel" ).animate({
-       // bottom: "-240"
-      //}, 200);
-    //});
-
-
     //this works only for iOS/Android
     if (isMobile.any()) {
 
@@ -385,8 +357,13 @@
     // Change the Brush Softness
 
 
+
+
     // Change the Brush Opacity
-    //get the alpha of the current brush and asjust it
+    //get the current brush alpha, and adjust it
+    //function brushOpacity() {
+      //canvas2d.fillStyle = "rgba(255, 255, 255, 0.5)";
+    //}
 
     // Change the Brush Stroke
     var BrushChange = function() {
@@ -395,9 +372,8 @@
 
     var brushStroke = $('#brushStrokeSize').slider({
       tooltip: "hide"
-    })
-                    .on('slide', BrushChange)
-                    .data('slider');
+    }).on('slide', BrushChange)
+      .data('slider');
 
 
   </script>
