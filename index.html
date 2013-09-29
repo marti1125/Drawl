@@ -35,6 +35,18 @@
     <script type="text/javascript" charset="utf-8">
      $( document ).ready(function() {
 
+       // if on website then do the add to home screen
+       var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
+       var is_explorer = navigator.userAgent.indexOf('MSIE') > -1;
+       var is_firefox = navigator.userAgent.indexOf('Firefox') > -1;
+       var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+       var is_Opera = navigator.userAgent.indexOf("Presto") > -1;
+       if ((is_chrome)&&(is_safari)) {is_safari=false;}
+       if (is_firefox) {
+         //$("body").html('<button id="install"><span class="icon icon-add">add</span></button>')
+         //alert('Its Firefox');
+       }
+
         var portraitLock = screen.mozLockOrientation("portrait");
 
         // FFOS specific
@@ -61,7 +73,7 @@
 <body>
 
 	<!-- install app from URL -->
-	<!-- <button id="install"><span class="icon icon-add">add</span></button> -->
+	<button id="install"><span class="icon icon-add">add</span></button>
 
   <div id="container">
 
