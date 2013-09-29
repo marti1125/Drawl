@@ -1,5 +1,5 @@
 
-    var newBrushOpacity = 0.1; // change this value on the slider
+    var newBrushOpacity = 1; // change this value on the slider
 
     // Pencil button
     $("#btn-pencil").click(function(){
@@ -19,71 +19,143 @@
     // toggle the color picker btn
     var i = 0;
     $("#btn-colorpicker").on('click', function(){
-      if(i == 0 && n == 1) {
-        //alert(i);
-        i = 0;
-        n = 0;
-        $( "#colorpicker.toolbar" ).animate({
-            bottom: "-240"
-          }, 200);
-      }
-      if(i == 1 && n == 1) {
-        i = 0;
-        n = 0;
-        $( "#colorpicker.toolbar" ).animate({
-            bottom: "-240"
-          }, 200);
-      }
-      if(i == 0 || n == 1) {
-        i = 1;
-        $( "#colorpicker.toolbar" ).animate({
-            bottom: "64"
-          }, 200);
-        $( "#brushsize.toolbar" ).animate({
-            bottom: "-200"
-          }, 200);
+
+      // for 640x960 screensize
+      if ($( window ).width() > 320 ) {
+        if(i == 0 && n == 1) {
+          //alert(i);
+          i = 0;
+          n = 0;
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "-340"
+            }, 200);
+        }
+        if(i == 1 && n == 1) {
+          i = 0;
+          n = 0;
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "-340"
+            }, 200);
+        }
+        if(i == 0 || n == 1) {
+          i = 1;
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "95"
+            }, 200);
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "-300"
+            }, 200);
+        } else {
+          //alert(i);
+          i = 0;
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "-340"
+            }, 200);
+        }
       } else {
-        //alert(i);
-        i = 0;
-        $( "#colorpicker.toolbar" ).animate({
-            bottom: "-240"
-          }, 200);
+        if(i == 0 && n == 1) {
+          //alert(i);
+          i = 0;
+          n = 0;
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "-240"
+            }, 200);
+        }
+        if(i == 1 && n == 1) {
+          i = 0;
+          n = 0;
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "-240"
+            }, 200);
+        }
+        if(i == 0 || n == 1) {
+          i = 1;
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "64"
+            }, 200);
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "-200"
+            }, 200);
+        } else {
+          //alert(i);
+          i = 0;
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "-240"
+            }, 200);
+        }
+
       }
     });
 
     // toggle the brushsize btn
     var n = 0;
     $("#btn-brushsize").on('click', function(){
-      if(i == 1 && n == 0) {
-        //alert(i);
-        i = 0;
-        n = 0;
-        $( "#brushsize.toolbar" ).animate({
-            bottom: "-200"
-          }, 200);
-      }
-      if(i == 1 && n == 1) {
-        //alert(i);
-        i = 0;
-        n = 0;
-        $( "#brushsize.toolbar" ).animate({
-            bottom: "-200"
-          }, 200);
-      }
-      if(n == 0 || i == 1) {
-        n = 1;
-        //alert("test");
-        $( "#brushsize.toolbar" ).animate({
-            bottom: "64"
-          }, 200);
-        $( "#colorpicker.toolbar" ).animate({
-            bottom: "-240"
-          }, 200);
+
+      // for 640x960 screensize
+      if ($( window ).width() > 320 ) {
+        if(i == 1 && n == 0) {
+          //alert(i);
+          i = 0;
+          n = 0;
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "-300"
+            }, 200);
+        }
+        if(i == 1 && n == 1) {
+          //alert(i);
+          i = 0;
+          n = 0;
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "-300"
+            }, 200);
+        }
+        if(n == 0 || i == 1) {
+          n = 1;
+          //alert("test");
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "95"
+            }, 200);
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "-340"
+            }, 200);
+        } else {
+          n = 0;
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "-300"
+            }, 200);
+        }
       } else {
-        n = 0;
-        $( "#brushsize.toolbar" ).animate({
-            bottom: "-200"
-          }, 200);
+        if(i == 1 && n == 0) {
+          //alert(i);
+          i = 0;
+          n = 0;
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "-200"
+            }, 200);
+        }
+        if(i == 1 && n == 1) {
+          //alert(i);
+          i = 0;
+          n = 0;
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "-200"
+            }, 200);
+        }
+        if(n == 0 || i == 1) {
+          n = 1;
+          //alert("test");
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "64"
+            }, 200);
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "-240"
+            }, 200);
+        } else {
+          n = 0;
+          $( "#brushsize.toolbar" ).animate({
+              bottom: "-200"
+            }, 200);
+        }
       }
     });
 
@@ -120,26 +192,46 @@
     $("#btn-cancel").click(function(){
       $(".overlay").remove();
 
-      $( "#done-panel" ).animate({
-          bottom: "-240"
+      if ($( window ).width() > 320 ) {
+        $( "#done-panel" ).animate({
+            bottom: "-340"
         }, 200);
-      //navigator.vibrate(1000);
+      } else {
+        $( "#done-panel" ).animate({
+            bottom: "-240"
+        }, 200);
+      }
     })
     // Clear drawing
     $('#btn-new').click(function(){
+      navigator.vibrate(100);
       canvas.width = canvas.width;
       $(".overlay").remove();
-      $( "#done-panel" ).animate({
-          bottom: "-240"
+      if ($( window ).width() > 320 ) {
+        $( "#done-panel" ).animate({
+            bottom: "-340"
         }, 200);
+      } else {
+        $( "#done-panel" ).animate({
+            bottom: "-240"
+        }, 200);
+      }
     });
+
 		$("#addDrawing").click(function(){
+		    navigator.vibrate(200);
 		    // unplug device to test
 	      //addDrawing();
 	      $(".overlay").remove();
-	      $( "#done-panel" ).animate({
-          bottom: "-240"
-        }, 200);
+        if ($( window ).width() > 320 ) {
+          $( "#done-panel" ).animate({
+              bottom: "-340"
+          }, 200);
+        } else {
+          $( "#done-panel" ).animate({
+              bottom: "-240"
+          }, 200);
+        }
 		});
 
 		// undo button
