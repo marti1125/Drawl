@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 
-#canvasArea { 
+#canvasArea {
   position: relative;
 }
 #imageView {
@@ -17,7 +17,7 @@
   height: 380px;
 }
 .toolbar {
-  background: #ccc;
+  background: rgba(0,0,0,0.4);
   position: fixed;
   bottom: -200px;
   width: 100%;
