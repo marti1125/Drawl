@@ -130,6 +130,14 @@
           bottom: "-240"
         }, 200);
     });
+		$("#addDrawing").click(function(){
+		    // unplug device to test
+	      //addDrawing();
+	      $(".overlay").remove();
+	      $( "#done-panel" ).animate({
+          bottom: "-240"
+        }, 200);
+		});
 
 
     // Save drawing
