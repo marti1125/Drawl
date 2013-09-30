@@ -14,8 +14,8 @@
   position: relative;
 }
 
-#sketchpad {
-
+canvas {
+  background: rgb(255,255,255);
 }
 
 #btn-pencil {
