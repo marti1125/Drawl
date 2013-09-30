@@ -1,8 +1,14 @@
-// FIX ME need to add button active states
+/*FIX ME need to add button active states*/
 /*button:active {
   border: 2px solid #000;
 }*/
 
+#startup {
+  position: absolute;
+  top: 45%;
+  width: 200px;
+  left: 19%;
+}
 
 #canvasArea {
   position: relative;
