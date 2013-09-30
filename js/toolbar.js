@@ -16,6 +16,12 @@
       context.lineWidth = 10;
     })
 
+    // Undo button
+    $("#btn-undo").click(function(){
+      //undo
+
+    })
+
     // toggle the color picker btn
     var i = 0;
     $("#btn-colorpicker").on('click', function(){
