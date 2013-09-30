@@ -18,6 +18,14 @@
 
 }
 
+#btn-pencil {
+  border: 1px solid rgb(0,0,0);
+}
+
+#btn-eraser {
+  border: 1px solid rgb(255,255,255);
+}
+
 #footer {
   background: orange;
   height: 20% !important;

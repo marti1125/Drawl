@@ -92,11 +92,11 @@
         <nav id="maintoolbar" class="navbar navbar-default navbar-fixed-bottom" role="navigation">
           <div class="col-xs-9">
             <button type="button" class="btn btn-default" id="btn-pencil">P</button>
+            <button type="button" class="btn btn-default" id="btn-eraser">E</button>
             <!-- <button type="button" class="btn btn-default"id="spraycan">Spr</button> -->
             <button type="button" class="btn btn-default" id="btn-colorpicker">C</button>
-            <button type="button" class="btn btn-default" id="btn-eraser">E</button>
             <button type="button" class="btn btn-default" id="btn-brushsize">S</button>
-            <button type="button" class="btn btn-default" id="btn-undo">U</button>
+            <!-- <button type="button" class="btn btn-default" id="btn-undo">U</button> -->
           </div>
           <div class="col-xs-3">
             <button type="button" class="btn btn-default pull-right" id="btn-done">Done</button>
@@ -128,8 +128,8 @@
         <div class="toolbar" id="brushsize">
             <div class="col-xs-12">
               <!-- <p>Brush size</p> -->
-              <div id="brushStrokeSize" class="slider slider-horizontal" style="width: 240px;"></div>
-              <p>
+              <div id="brushStrokeSize" class="slider slider-horizontal" style="width: 200px;"></div>
+              <p class="pull-right">
                 <button class="btn btn-default" id="roundbrush">r</button>
                 <button class="btn btn-default"id="squarebrush">s</button>
               </p>
@@ -302,9 +302,54 @@
 
     // Change the Brush Stroke
     var BrushChange = function() {
+      //set current brush stroke size
       context.lineWidth = brushStroke.getValue();
+      //alert(brushStroke.getValue());
     };
 
+    // Pencil button
+    $("#btn-pencil").click(function(){
+      //highlight this button
+      context.fillStyle = 'rgba(0,0,0,' + newBrushOpacity + ')'; // i
+      context.strokeStyle = 'rgba(0,0,0,' + newBrushOpacity + ')'; // i
+      $("#btn-pencil").css("border","1px solid rgb(0,0,0)");
+      context.lineWidth = brushStroke.getValue();
+    })
+
+    //Eraser button
+    $("#btn-eraser").click(function(){
+      context.fillStyle = 'rgba(255,255,255,' + newBrushOpacity + ')'; // i
+      context.strokeStyle = 'rgba(255,255,255,' + newBrushOpacity + ')'; // i
+      context.lineWidth = brushStroke.getValue();
+
+      // for 640x960 screensize
+      if ($( window ).width() > 320 ) {
+        if(n == 0 || i == 1) {
+          n = 1;
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "-340"
+            }, 200);
+        } else {
+
+        }
+      } else {
+        if(i == 1 && n == 0) {
+        }
+        if(i == 1 && n == 1) {
+        }
+        if(n == 0 || i == 1) {
+          n = 1;
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "-240"
+            }, 200);
+        } else {
+
+        }
+      }
+
+    })
+
+    //get brush stroke from slider
     var brushStroke = $('#brushStrokeSize').slider({
       tooltip: "hide"
     }).on('slide', BrushChange)

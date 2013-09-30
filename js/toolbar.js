@@ -1,20 +1,56 @@
 
-    var newBrushOpacity = 1; // change this value on the slider
+    var newBrushOpacity = 0.1; // change this value on the slider
+    var brushStrokeSize = 1;
 
-    // Pencil button
-    $("#btn-pencil").click(function(){
-      //highlight this button
-      context.fillStyle = 'rgba(0,0,0,' + newBrushOpacity + ')'; // i
-      context.strokeStyle = 'rgba(0,0,0,' + newBrushOpacity + ')'; // i
-      context.lineWidth = 1;
-    })
+    // Colors
+    $("#color-zero").click(function(){
+      context.fillStyle = 'rgba(0,0,0,' + newBrushOpacity + ')'; // black
+      context.strokeStyle = 'rgba(0,0,0,' + newBrushOpacity + ')'; // black
+      //set the pencil button border
+      $("#btn-pencil").css("border","1px solid rgb(0,0,0)");
+    });
 
-    //Eraser button
-    $("#btn-eraser").click(function(){
-      context.fillStyle = '#fff'; // i
-      context.strokeStyle = '#fff'; // i
-      context.lineWidth = 10;
-    })
+    $("#color-one").click(function(){
+      context.fillStyle = 'rgba(235,53,36,' + newBrushOpacity + ')'; // red
+      context.strokeStyle = 'rgba(235,53,36,' + newBrushOpacity + ')'; // red
+      $("#btn-pencil").css("border","1px solid rgb(235,53,36)");
+    });
+
+    $("#color-two").click(function(){
+      context.fillStyle = 'rgba(223,78,50,' + newBrushOpacity + ')'; // o
+      context.strokeStyle = 'rgba(223,78,50,' + newBrushOpacity + ')'; // o
+      $("#btn-pencil").css("border","1px solid rgb(223,78,50)");
+    });
+
+    $("#color-three").click(function(){
+      context.fillStyle = 'rgba(223,171,48,' + newBrushOpacity + ')'; // y
+      context.strokeStyle = 'rgba(223,171,48,' + newBrushOpacity + ')'; // y
+      $("#btn-pencil").css("border","1px solid rgb(223,171,48)");
+    });
+
+    $("#color-four").click(function(){
+      context.fillStyle = 'rgba(74,187,134,' + newBrushOpacity + ')'; // g
+      context.strokeStyle = 'rgba(74,187,134,' + newBrushOpacity + ')'; // g
+      $("#btn-pencil").css("border","1px solid rgb(74,187,134)");
+    });
+
+    $("#color-five").click(function(){
+      context.fillStyle = 'rgba(52,152,219,' + newBrushOpacity + ')'; // b
+      context.strokeStyle = 'rgba(52,152,219,' + newBrushOpacity + ')'; // b
+      $("#btn-pencil").css("border","1px solid rgb(52,152,219)");
+    });
+
+    $("#color-six").click(function(){
+      context.fillStyle = 'rgba(53,72,157,' + newBrushOpacity + ')'; // i
+      context.strokeStyle = 'rgba(53,72,157,' + newBrushOpacity + ')'; // i
+      $("#btn-pencil").css("border","1px solid rgb(53,72,157)");
+    });
+
+    $("#color-seven").click(function(){
+      context.fillStyle = 'rgba(133,36,114,' + newBrushOpacity + ')'; // v
+      context.strokeStyle = 'rgba(133,36,114,' + newBrushOpacity + ')'; // v
+      $("#btn-pencil").css("border","1px solid rgb(53,72,157)");
+    });
 
     // Undo button
     $("#btn-undo").click(function(){

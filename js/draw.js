@@ -1,7 +1,3 @@
-    // get the canvas element and its context
-    var canvas = document.getElementById('sketchpad');
-    var context = canvas.getContext('2d');
-
     // Square Brush
     $("#squarebrush").click(function(){
       context.lineCap = 'square';
@@ -22,55 +18,25 @@
       //context.fill();
     });
 
-    // Colors
-    $("#color-zero").click(function(){
-      context.fillStyle = '#000000'; // black
-      context.strokeStyle = '#000000'; // black
-    });
+    // get the canvas element and its context
+    var canvas = document.getElementById('sketchpad');
+    var context = canvas.getContext('2d');
 
-    $("#color-one").click(function(){
-      context.fillStyle = '#eb3524'; // red
-      context.strokeStyle = '#eb3524'; // red
-    });
-
-    $("#color-two").click(function(){
-      context.fillStyle = '#df4e32'; // o
-      context.strokeStyle = '#df4e32'; // o
-    });
-
-    $("#color-three").click(function(){
-      context.fillStyle = '#dfab30'; // y
-      context.strokeStyle = '#dfab30'; // y
-    });
-
-    $("#color-four").click(function(){
-      context.fillStyle = '#4abb86'; // g
-      context.strokeStyle = '#4abb86'; // g
-    });
-
-    $("#color-five").click(function(){
-      context.fillStyle = '#3498db'; // b
-      context.strokeStyle = '#3498db'; // b
-    });
-
-    $("#color-six").click(function(){
-      context.fillStyle = '#35489d'; // i
-      context.strokeStyle = '#35489d'; // i
-    });
-
-    $("#color-seven").click(function(){
-      context.fillStyle = '#852472'; // v
-      context.strokeStyle = '#852472'; // v
-    });
-
+    var firstTimeUse = 0;
 
     // create a drawer which tracks touch movements
     var drawer = {
        isDrawing: false,
        touchstart: function(coors){
 
-          //remove div
-          $("#startup").remove();
+          firstTimeUse ++;
+
+          //remove div, for first time use
+          if(firstTimeUse == 1){
+            $("#startup").remove();
+            context.fillStyle = 'rgba(0,0,0,0.1)'; // black
+            context.strokeStyle = 'rgba(0,0,0,0.1)'; // black
+          }
 
           context.beginPath();
           context.moveTo(coors.x, coors.y);
