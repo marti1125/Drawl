@@ -3,6 +3,10 @@
   border: 2px solid #000;
 }*/
 
+body {
+  //background: #fff;
+}
+
 #startup {
   position: absolute;
   top: 45%;
@@ -14,8 +18,12 @@
   position: relative;
 }
 
+#sketchpad {
+  //background: rgb(0,255,255);
+}
+
 canvas {
-  background: rgb(255,255,255);
+  //background: rgb(0,255,255);
 }
 
 #btn-pencil {
