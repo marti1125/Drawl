@@ -3,7 +3,7 @@
 A simple drawing app.
 
 ## To do
-* add white background to .png image when you save it
+* ~~add white background to .png image when you save it~~
 * add Undo Btn
 * add separate eraser strokes btn
 * add separate pencil strokes btn
