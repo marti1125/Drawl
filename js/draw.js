@@ -8,6 +8,11 @@
       context.lineCap = 'round';
     });
 
+    $("#startup").click(function(){
+      //alert("click");
+      //$("#startup").hide();
+    })
+
     // Add a blur/soft brush
     $("#spraycan").click(function(){
       context.shadowColor = context.fillStyle;
@@ -21,6 +26,10 @@
     // get the canvas element and its context
     var canvas = document.getElementById('sketchpad');
     var context = canvas.getContext('2d');
+    $("#sketchpad").css("background-image","url('../images/btns/startup-image.png')")
+                   .css("background-position","center center")
+                   .css("background-repeat","no-repeat")
+                   .css("background-size","30%")
 
     var firstTimeUse = 0;
 
@@ -33,7 +42,7 @@
 
           //remove div, for first time use
           if(firstTimeUse == 1){
-            $("#startup").remove();
+            $("#sketchpad").css("background-image","none")
             context.fillStyle = 'rgba(0,0,0,0.1)'; // black
             context.strokeStyle = 'rgba(0,0,0,0.1)'; // black
           }
@@ -41,6 +50,7 @@
           context.beginPath();
           context.moveTo(coors.x, coors.y);
           this.isDrawing = true;
+          //alert(this.isDrawing);
        },
        touchmove: function(coors){
           if (this.isDrawing) {

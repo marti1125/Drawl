@@ -50,11 +50,11 @@ canvas {
 }
 
 #btn-pencil {
-  border-bottom: 1px solid rgb(0,0,0);
+  //border-bottom: 1px solid rgb(0,0,0);
 }
 
 #btn-eraser {
-  border-bottom: 1px solid rgb(255,255,255);
+  //border-bottom: 1px solid rgb(255,255,255);
 }
 
 #footer {
@@ -101,48 +101,68 @@ button#color-zero {
   background: rgb(0,0,0);
   border: 0px;
   border-radius: 2px;
+  height: 40px;
+  width: 40px;
 }
 
 button#color-one {
   background: rgb(235,53,36);
   border: 0px;
   border-radius: 2px;
+  height: 40px;
+  width: 40px;
 }
 
 button#color-two {
   background: rgb(223,78,50);
   border: 0px;
   border-radius: 2px;
+  height: 40px;
+  width: 40px;
 }
 
 button#color-three {
   background: rgb(223,171,48);
   border: 0px;
   border-radius: 2px;
+  height: 40px;
+  width: 40px;
 }
 
 button#color-four {
   background: rgb(74,187,134);
   border: 0px;
   border-radius: 2px;
+  height: 40px;
+  width: 40px;
 }
 
 button#color-five {
   background: rgb(52,152,219);
   border: 0px;
   border-radius: 2px;
+  height: 40px;
+  width: 40px;
 }
 
 button#color-six {
   background: rgb(53,72,157);
   border: 0px;
   border-radius: 2px;
+  height: 40px;
+  width: 40px;
 }
 
 button#color-seven {
   background: rgb(133,36,114);
   border: 0px;
   border-radius: 2px;
+  height: 40px;
+  width: 40px;
+}
+
+.btn-primary {
+  background-color: #00539f;
 }
 
 #done-panel {

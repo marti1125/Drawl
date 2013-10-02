@@ -7,7 +7,9 @@
       context.fillStyle = 'rgba(0,0,0,' + newBrushOpacity + ')'; // black
       context.strokeStyle = 'rgba(0,0,0,' + newBrushOpacity + ')'; // black
       //set the pencil button border
-      $("#btn-pencil").css("border-bottom","1px solid rgb(0,0,0)");
+      $("#btn-pencil").css("background-color","rgb(0,0,0)");
+      //replace image with black brush
+      //$("#btn-pencil").replaceWith("<img src='../images/btns/btn-brush-green.png' style='margin-left: 6px; margin-right: 6px; height: 31px; width: 31px;'>");
     });
 
     $("#color-one").click(function(){
