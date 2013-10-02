@@ -51,6 +51,11 @@ canvas {
 
 #btn-pencil {
   //border-bottom: 1px solid rgb(0,0,0);
+  background: url('../images/btns/btn-brush.png');
+  background-size: 31px 31px;
+  background-position: center center;
+  width: 31px;
+  height: 31px;
 }
 
 #btn-eraser {
@@ -71,7 +76,7 @@ canvas {
   border-radius: 0px;
 }
 
-#maintoolbar button {
+#maintoolbar button#btn-eraser, button#btn-colorpicker, button#btn-brushsize, button#btn-done {
   background: none;
 }
 

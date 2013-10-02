@@ -85,9 +85,9 @@
       <footer id="footer">
         <nav id="maintoolbar" class="navbar navbar-default navbar-fixed-bottom" role="navigation">
           <div class="col-xs-9">
-            <button type="button" class="btn btn-xs" id="btn-pencil"><img src="images/btns/btn-brush.png"></button>
+            <button type="button" class="btn btn-xs" id="btn-pencil"><!-- <img src="images/btns/btn-brush.png"> --></button>
             <button type="button" class="btn btn-xs" id="btn-eraser"><img src="images/btns/btn-eraser.png"></button>
-            <!-- <button type="button" class="btn btn-default"id="spraycan">Spr</button> -->
+            <!-- <button type="button" class="btn btn-default"id="spraycan">Spray</button> -->
             <button type="button" class="btn btn-xs" id="btn-colorpicker"><img src="images/btns/btn-palette.png"></button>
             <button type="button" class="btn btn-xs" id="btn-brushsize"><img src="images/btns/btn-styles.png"></button>
             <!-- <button type="button" class="btn btn-default" id="btn-undo">U</button> -->
@@ -306,8 +306,10 @@
       //highlight this button
       context.fillStyle = 'rgba(0,0,0,' + newBrushOpacity + ')'; // i
       context.strokeStyle = 'rgba(0,0,0,' + newBrushOpacity + ')'; // i
-      $("#btn-pencil").css("border-bottom","1px solid rgb(0,0,0)");
       context.lineWidth = brushStroke.getValue();
+      $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-blk.png')")
+                      .css("background-size","31px 31px")
+                      .css("background-position","center center");
     })
 
     //Eraser button
