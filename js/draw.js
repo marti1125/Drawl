@@ -26,10 +26,22 @@
     // get the canvas element and its context
     var canvas = document.getElementById('sketchpad');
     var context = canvas.getContext('2d');
-    $("#sketchpad").css("background-image","url('../images/btns/startup-image.png')")
-                   .css("background-position","center center")
-                   .css("background-repeat","no-repeat")
-                   .css("background-size","30%")
+
+    if($( window ).width() > 320) {
+      //for large screensize
+      $("#sketchpad").css("background-image","url('../images/btns/startup-image.png')")
+                     .css("background-position","40% center")
+                     .css("background-repeat","no-repeat")
+                     .css("background-size","30%")
+    } else {
+      //for small screensize
+      $("#sketchpad").css("background-image","url('../images/btns/startup-image.png')")
+                     .css("background-position","center center")
+                     .css("background-repeat","no-repeat")
+                     .css("background-size","30%")
+    }
+
+
 
     var firstTimeUse = 0;
 
