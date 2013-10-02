@@ -1,8 +1,8 @@
 # Drawl
 
-A simple drawing app.
+A simple drawing app for Firefox OS.
 
-## To do
+## Roadmap
 * ~~add white background to .png image when you save it~~
 * add Undo Btn
 * add separate eraser strokes btn
@@ -17,3 +17,9 @@ A simple drawing app.
 * http://www.eyecon.ro/bootstrap-slider/
 * http://tenderlovingcode.com/blog/web-apps/html5-canvas-drawing-on-ipad/
 * http://getbootstrap.com/
+
+## Contributors
+
+* [Aaron Druck](https://www.whatthedruck.com/)
+* [Maureen Hanratty](http://www.mhanratty.com)
+
