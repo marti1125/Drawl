@@ -9,7 +9,7 @@ function refreshCanvas() {
       ctx2.clearRect(0,0,maincanvas2.width,maincanvas2.height);
 
   		//reset the globalCompositeOperation to what it was
-  		ctx2.globalCompositeOperation = compositeOperation;
+  		ctx2.globalCompositeOperation = 'source-over';
 }
 
 
