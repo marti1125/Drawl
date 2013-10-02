@@ -78,7 +78,10 @@
 	<!-- install app from URL -->
 	<!-- <button id="install"><span class="icon icon-add">add</span></button> -->
 
-  <div id="startup">Tap the screen to start drawing</div>
+  <div id="startup" class="text-center">
+    <img src="images/btns/startup-image.png" style="width: 50%" alt="startup image">
+    <p>Tap to draw!</p>
+  </div>
 
   <div id="container">
 
@@ -91,15 +94,15 @@
       <footer id="footer">
         <nav id="maintoolbar" class="navbar navbar-default navbar-fixed-bottom" role="navigation">
           <div class="col-xs-9">
-            <button type="button" class="btn btn-default" id="btn-pencil">P</button>
-            <button type="button" class="btn btn-default" id="btn-eraser">E</button>
+            <button type="button" class="btn btn-xs" id="btn-pencil"><img src="images/btns/btn-brush.png"></button>
+            <button type="button" class="btn btn-xs" id="btn-eraser"><img src="images/btns/btn-eraser.png"></button>
             <!-- <button type="button" class="btn btn-default"id="spraycan">Spr</button> -->
-            <button type="button" class="btn btn-default" id="btn-colorpicker">C</button>
-            <button type="button" class="btn btn-default" id="btn-brushsize">S</button>
+            <button type="button" class="btn btn-xs" id="btn-colorpicker"><img src="images/btns/btn-palette.png"></button>
+            <button type="button" class="btn btn-xs" id="btn-brushsize"><img src="images/btns/btn-styles.png"></button>
             <!-- <button type="button" class="btn btn-default" id="btn-undo">U</button> -->
           </div>
           <div class="col-xs-3">
-            <button type="button" class="btn btn-default pull-right" id="btn-done">Done</button>
+            <button type="button" class="btn btn-xs pull-right" id="btn-done"><img src="images/btns/btn-done.png"></button>
           </div>
         </nav>
 
@@ -113,14 +116,14 @@
 
         <div class="toolbar" id="colorpicker">
             <div class="col-xs-12">
-              <button class="btn btn-default" id="color-zero">b</button>
-              <button class="btn btn-default" id="color-one">r</button>
-              <button class="btn btn-default" id="color-two">o</button>
-              <button class="btn btn-default" id="color-three">y</button>
-              <button class="btn btn-default" id="color-four">g</button>
-              <button class="btn btn-default" id="color-five">b</button>
-              <button class="btn btn-default" id="color-six">i</button>
-              <button class="btn btn-default" id="color-seven">v</button>
+              <button class="btn btn-default" id="color-zero"></button>
+              <button class="btn btn-default" id="color-one"></button>
+              <button class="btn btn-default" id="color-two"></button>
+              <button class="btn btn-default" id="color-three"></button>
+              <button class="btn btn-default" id="color-four"></button>
+              <button class="btn btn-default" id="color-five"></button>
+              <button class="btn btn-default" id="color-six"></button>
+              <button class="btn btn-default" id="color-seven"></button>
             </div>
         </div>
 
@@ -128,10 +131,10 @@
         <div class="toolbar" id="brushsize">
             <div class="col-xs-12">
               <!-- <p>Brush size</p> -->
-              <div id="brushStrokeSize" class="slider slider-horizontal" style="width: 200px;"></div>
+              <div id="brushStrokeSize" class="slider slider-horizontal" style="width: 160px;"></div>
               <p class="pull-right">
-                <button class="btn btn-default" id="roundbrush">r</button>
-                <button class="btn btn-default"id="squarebrush">s</button>
+                <button class="btn btn-xs" id="roundbrush"><img src="images/btns/btn-brush-round.png"></button>
+                <button class="btn btn-xs"id="squarebrush"><img src="images/btns/btn-brush-square.png"></button>
               </p>
 
               <!-- <p>Brush softness</p> -->
@@ -312,7 +315,7 @@
       //highlight this button
       context.fillStyle = 'rgba(0,0,0,' + newBrushOpacity + ')'; // i
       context.strokeStyle = 'rgba(0,0,0,' + newBrushOpacity + ')'; // i
-      $("#btn-pencil").css("border","1px solid rgb(0,0,0)");
+      $("#btn-pencil").css("border-bottom","1px solid rgb(0,0,0)");
       context.lineWidth = brushStroke.getValue();
     })
 
@@ -349,6 +352,7 @@
 
     })
 
+    // http://www.eyecon.ro/bootstrap-slider/
     //get brush stroke from slider
     var brushStroke = $('#brushStrokeSize').slider({
       tooltip: "hide"

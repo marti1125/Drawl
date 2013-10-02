@@ -3,13 +3,36 @@
   border: 2px solid #000;
 }*/
 
+@font-face {
+    font-family: FiraSansOT-Bold;
+    src: url('../../fonts/FiraSansOT-Bold.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: FiraSansOT-Medium;
+    src: url('../../fonts/FiraSansOT-Medium.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: FiraSansOT-Regular;
+    src: url('../../fonts/FiraSansOT-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 body {
   //background: #fff;
 }
 
 #startup {
+  font-family: FiraSansOT-Regular;
   position: absolute;
-  top: 45%;
+  top: 30%;
   width: 200px;
   left: 19%;
 }
@@ -27,11 +50,11 @@ canvas {
 }
 
 #btn-pencil {
-  border: 1px solid rgb(0,0,0);
+  border-bottom: 1px solid rgb(0,0,0);
 }
 
 #btn-eraser {
-  border: 1px solid rgb(255,255,255);
+  border-bottom: 1px solid rgb(255,255,255);
 }
 
 #footer {
@@ -41,15 +64,85 @@ canvas {
 }
 
 #maintoolbar {
-  background: rgba(0,0,0,0.4);
+  background: rgba(249,249,249,0.9);
+}
+
+#maintoolbar #btn-pencil {
+  border-radius: 0px;
+}
+
+#maintoolbar button {
+  background: none;
+}
+
+#maintoolbar button img{
+  width: 31px;
+  height: 31px;
+}
+
+#brushsize button {
+  background: none;
+}
+
+#brushsize button img{
+  width: 26px;
+  height: 26px;
 }
 
 .toolbar {
-  background: rgba(0,0,0,0.4);
+  background: rgba(249,249,249,0.9);
   position: fixed;
   bottom: -200px;
   width: 100%;
   //height: 20px;
+}
+
+button#color-zero {
+  background: rgb(0,0,0);
+  border: 0px;
+  border-radius: 2px;
+}
+
+button#color-one {
+  background: rgb(235,53,36);
+  border: 0px;
+  border-radius: 2px;
+}
+
+button#color-two {
+  background: rgb(223,78,50);
+  border: 0px;
+  border-radius: 2px;
+}
+
+button#color-three {
+  background: rgb(223,171,48);
+  border: 0px;
+  border-radius: 2px;
+}
+
+button#color-four {
+  background: rgb(74,187,134);
+  border: 0px;
+  border-radius: 2px;
+}
+
+button#color-five {
+  background: rgb(52,152,219);
+  border: 0px;
+  border-radius: 2px;
+}
+
+button#color-six {
+  background: rgb(53,72,157);
+  border: 0px;
+  border-radius: 2px;
+}
+
+button#color-seven {
+  background: rgb(133,36,114);
+  border: 0px;
+  border-radius: 2px;
 }
 
 #done-panel {
@@ -57,6 +150,7 @@ canvas {
   width: 100%;
   bottom: -300px;
   z-index: 9999;
+  font-family: FiraSansOT-Regular;
 }
 
 
