@@ -54,6 +54,7 @@ canvas {
   background: url('../images/btns/btn-brush.png');
   background-size: 31px 31px;
   background-position: center center;
+  background-repeat: no-repeat;
   width: 31px;
   height: 31px;
 }
@@ -167,7 +168,7 @@ button#color-seven {
 }
 
 .btn-primary {
-  background-color: #00539f;
+  background-color: #2980b9;
 }
 
 #done-panel {

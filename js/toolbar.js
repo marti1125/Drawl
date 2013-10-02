@@ -9,6 +9,7 @@
       //set the pencil button border
       $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-blk.png')")
                       .css("background-size","31px 31px")
+                      .css("background-repeat","no-repeat")
                       .css("background-position","center center");
     });
 
@@ -17,6 +18,7 @@
       context.strokeStyle = 'rgba(235,53,36,' + newBrushOpacity + ')'; // red
       $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-one.png')")
                       .css("background-size","31px 31px")
+                      .css("background-repeat","no-repeat")
                       .css("background-position","center center");
     });
 
@@ -25,6 +27,7 @@
       context.strokeStyle = 'rgba(223,78,50,' + newBrushOpacity + ')'; // o
       $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-two.png')")
                       .css("background-size","31px 31px")
+                      .css("background-repeat","no-repeat")
                       .css("background-position","center center");
     });
 
@@ -33,6 +36,7 @@
       context.strokeStyle = 'rgba(223,171,48,' + newBrushOpacity + ')'; // y
       $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-three.png')")
                       .css("background-size","31px 31px")
+                      .css("background-repeat","no-repeat")
                       .css("background-position","center center");
     });
 
@@ -41,6 +45,7 @@
       context.strokeStyle = 'rgba(74,187,134,' + newBrushOpacity + ')'; // g
       $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-four.png')")
                       .css("background-size","31px 31px")
+                      .css("background-repeat","no-repeat")
                       .css("background-position","center center");
     });
 
@@ -49,6 +54,7 @@
       context.strokeStyle = 'rgba(52,152,219,' + newBrushOpacity + ')'; // b
       $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-five.png')")
                       .css("background-size","31px 31px")
+                      .css("background-repeat","no-repeat")
                       .css("background-position","center center");
     });
 
@@ -57,6 +63,7 @@
       context.strokeStyle = 'rgba(53,72,157,' + newBrushOpacity + ')'; // i
       $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-six.png')")
                       .css("background-size","31px 31px")
+                      .css("background-repeat","no-repeat")
                       .css("background-position","center center");
     });
 
@@ -65,6 +72,7 @@
       context.strokeStyle = 'rgba(133,36,114,' + newBrushOpacity + ')'; // v
       $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-seven.png')")
                       .css("background-size","31px 31px")
+                      .css("background-repeat","no-repeat")
                       .css("background-position","center center");
     });
 
