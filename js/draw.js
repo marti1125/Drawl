@@ -27,7 +27,7 @@
     var canvas = document.getElementById('sketchpad');
     var context = canvas.getContext('2d');
     var brushSize = 1;
-    var brushColor = '';
+    var brushColor = '#000000';
     var points = [];
 
     if($( window ).width() > 320) {
@@ -65,10 +65,10 @@
           if (context.lineWidth != brushSize) {
               context.lineWidth = brushSize;
           }
-          // causes the eraser to get messed up
-          //if (context.strokeStyle != brushColor) {
-              //context.strokeStyle = brushColor;
-          //}
+          // causes the eraser to get messed up, if the current brush color doesnt equal the brush color set, then reset it
+          if (context.strokeStyle != brushColor) {
+              context.strokeStyle = brushColor;
+          }
 
           context.beginPath();
           context.moveTo(coors.x, coors.y);
