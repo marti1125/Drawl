@@ -77,13 +77,13 @@ canvas {
   border-radius: 0px;
 }
 
-#maintoolbar button#btn-eraser, button#btn-colorpicker, button#btn-brushsize, button#btn-done {
+#maintoolbar button#btn-eraser, button#btn-colorpicker, button#btn-brushsize, button#btn-done, button#btn-undo {
   background: none;
 }
 
 #maintoolbar button img{
-  width: 31px;
-  height: 31px;
+  width: 28px;
+  height: 28px;
 }
 
 #brushsize button {
