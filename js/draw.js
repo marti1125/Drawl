@@ -26,6 +26,9 @@
     // get the canvas element and its context
     var canvas = document.getElementById('sketchpad');
     var context = canvas.getContext('2d');
+    var brushSize = 20;
+    var brushColor = "#ff0000";
+    var points = [];
 
     if($( window ).width() > 320) {
       //for large screensize
@@ -61,12 +64,27 @@
 
           context.beginPath();
           context.moveTo(coors.x, coors.y);
+          points.push({
+              x: coors.x,
+              y: coors.y,
+              size: brushSize,
+              color: brushColor,
+              mode: "begin"
+          });
           this.isDrawing = true;
           //alert(this.isDrawing);
        },
        touchmove: function(coors){
           if (this.isDrawing) {
              context.lineTo(coors.x, coors.y);
+             // command pattern stuff
+             points.push({
+                 x: coors.x,
+                 y: coors.y,
+                 size: brushSize,
+                 color: brushColor,
+                 mode: "draw"
+             });
              context.stroke();
           }
        },
@@ -74,6 +92,13 @@
           if (this.isDrawing) {
              this.touchmove(coors);
              this.isDrawing = false;
+             points.push({
+                 x: coors.x,
+                 y: coors.y,
+                 size: brushSize,
+                 color: brushColor,
+                 mode: "end"
+             });
           }
        }
     };
@@ -93,6 +118,54 @@
     canvas.addEventListener('touchstart',draw, false);
     canvas.addEventListener('touchmove',draw, false);
     canvas.addEventListener('touchend',draw, false);
+
+    function redrawAll() {
+
+        if (points.length == 0) {
+            return;
+        }
+
+        context.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (var i = 0; i < points.length; i++) {
+
+            var pt = points[i];
+
+            var begin = false;
+
+            if (context.lineWidth != pt.size) {
+                context.lineWidth = pt.size;
+                begin = true;
+            }
+            if (context.strokeStyle != pt.color) {
+                context.strokeStyle = pt.color;
+                begin = true;
+            }
+            if (pt.mode == "begin" || begin) {
+                context.beginPath();
+                context.moveTo(pt.x, pt.y);
+            }
+            context.lineTo(pt.x, pt.y);
+            if (pt.mode == "end" || (i == points.length - 1)) {
+                context.stroke();
+            }
+        }
+        context.stroke();
+    }
+
+    function undoLast() {
+        points.pop();
+        redrawAll();
+    }
+
+    var interval;
+
+    //for touchdown
+    $("#undo").bind('touchstart', function(){
+        interval = setInterval(undoLast, 50);
+    }).bind('touchend', function(){
+        clearInterval(interval);
+    });
 
     // prevent elastic scrolling
     document.body.addEventListener('touchmove',function(event){
