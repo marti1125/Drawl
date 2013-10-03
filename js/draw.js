@@ -1,4 +1,4 @@
-    // Square Brush
+// Square Brush
     $("#squarebrush").click(function(){
       context.lineCap = 'square';
     });
@@ -7,6 +7,11 @@
     $("#roundbrush").click(function(){
       context.lineCap = 'round';
     });
+
+    $("#startup").click(function(){
+      //alert("click");
+      //$("#startup").hide();
+    })
 
     // Add a blur/soft brush
     $("#spraycan").click(function(){
@@ -21,10 +26,8 @@
     // get the canvas element and its context
     var canvas = document.getElementById('sketchpad');
     var context = canvas.getContext('2d');
-
-    //set initial brush size stroke here, so it's recorded.  it's not being recorded.
-    var brushSize = 1;
-    var brushColor = 'rgba(0, 0, 0, 0.1)';
+    var brushSize = 20;
+    var brushColor = "#ff0000";
     var points = [];
 
     if($( window ).width() > 320) {
@@ -49,7 +52,9 @@
     var drawer = {
        isDrawing: false,
        touchstart: function(coors){
+
           firstTimeUse ++;
+
           //remove div, for first time use
           if(firstTimeUse == 1){
             $("#sketchpad").css("background-image","none")
@@ -58,13 +63,6 @@
           }
 
           context.beginPath();
-          if (context.lineWidth != brushSize) {
-              context.lineWidth = brushSize;
-          }
-          if (context.strokeStyle != brushColor) {
-              alert(brushColor)
-              context.strokeStyle = brushColor;
-          }
           context.moveTo(coors.x, coors.y);
           points.push({
               x: coors.x,
@@ -106,71 +104,20 @@
     };
 
     // create a function to pass touch events and coordinates to drawer
-    function draw(event) {
-        var type = null;
-        // map mouse events to touch events
-        switch(event.type){
-            case "mousedown":
-                    event.touches = [];
-                    event.touches[0] = {
-                        pageX: event.pageX,
-                        pageY: event.pageY
-                    };
-                    type = "touchstart";
-            break;
-            case "mousemove":
-                    event.touches = [];
-                    event.touches[0] = {
-                        pageX: event.pageX,
-                        pageY: event.pageY
-                    };
-                    type = "touchmove";
-            break;
-            case "mouseup":
-                    event.touches = [];
-                    event.touches[0] = {
-                        pageX: event.pageX,
-                        pageY: event.pageY
-                    };
-                    type = "touchend";
-            break;
-        }
-
-        // touchend clear the touches[0], so we need to use changedTouches[0]
-        var coors;
-        if(event.type === "touchend") {
-            coors = {
-                x: event.changedTouches[0].pageX,
-                y: event.changedTouches[0].pageY
-            };
-        }
-        else {
-            // get the touch coordinates
-            coors = {
-                x: event.touches[0].pageX,
-                y: event.touches[0].pageY
-            };
-        }
-        type = type || event.type
-        // pass the coordinates to the appropriate handler
-        drawer[type](coors);
+    function draw(event){
+       // get the touch coordinates
+       var coors = {
+          x: event.targetTouches[0].pageX,
+          y: event.targetTouches[0].pageY
+       };
+       // pass the coordinates to the appropriate handler
+       drawer[event.type](coors);
     }
-
-    // detect touch capabilities
-    var touchAvailable = ('createTouch' in document) || ('ontouchstart' in window);
 
     // attach the touchstart, touchmove, touchend event listeners.
-    if(touchAvailable){
-        canvas.addEventListener('touchstart', draw, false);
-        canvas.addEventListener('touchmove', draw, false);
-        canvas.addEventListener('touchend', draw, false);
-    }
-    // attach the mousedown, mousemove, mouseup event listeners.
-    else {
-        canvas.addEventListener('mousedown', draw, false);
-        canvas.addEventListener('mousemove', draw, false);
-        canvas.addEventListener('mouseup', draw, false);
-    }
+    canvas.addEventListener('touchstart',draw, false);
+    canvas.addEventListener('touchmove',draw, false);
+    canvas.addEventListener('touchend',draw, false);
 
     function redrawAll() {
 
@@ -186,13 +133,11 @@
 
             var begin = false;
 
-            // check to see if the brush size that was stored equals the current strokesize, if not, then set to brushsize up top
             if (context.lineWidth != pt.size) {
                 context.lineWidth = pt.size;
                 begin = true;
             }
             if (context.strokeStyle != pt.color) {
-                alert(context.strokeStyle, pt.color);
                 context.strokeStyle = pt.color;
                 begin = true;
             }
@@ -216,21 +161,10 @@
     var interval;
 
     //for touchdown
-    $("#btn-undo").bind('touchstart', function(){
+    $("#btn-undo").click(function(e){
         interval = setInterval(undoLast, 50);
     }).bind('touchend', function(){
         clearInterval(interval);
-    });
-    //for mousedown
-    $("#btn-undo").mousedown(function () {
-        interval = setInterval(undoLast, 50);
-    }).mouseup(function () {
-        clearInterval(interval);
-    });
-
-    $("#brush5").click(function () {
-        brushSize = 5;
-        //alert("test");
     });
 
     // prevent elastic scrolling

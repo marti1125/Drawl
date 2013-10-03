@@ -124,7 +124,6 @@
         <div class="toolbar" id="brushsize">
             <div class="col-xs-12">
               <!-- <p>Brush size</p> -->
-              <!-- <button id="brush5">5px Brush</button> -->
               <div id="brushStrokeSize" class="slider slider-horizontal" style="width: 160px;"></div>
               <p class="pull-right">
                 <button class="btn btn-xs" id="roundbrush"><img src="images/btns/btn-brush-round.png"></button>
@@ -301,7 +300,6 @@
     var BrushChange = function() {
       //set current brush stroke size
       context.lineWidth = brushStroke.getValue();
-      brushSize = brushStroke.getValue();
       //alert(brushStroke.getValue());
     };
 
