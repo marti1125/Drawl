@@ -318,8 +318,9 @@
 
     //Eraser button
     $("#btn-eraser").click(function(){
-      context.fillStyle = 'rgba(255,255,255,' + newBrushOpacity + ')'; // i
-      context.strokeStyle = 'rgba(255,255,255,' + newBrushOpacity + ')'; // i
+      alert("est");
+      context.fillStyle = '#ffffff'; // i
+      context.strokeStyle = '#ffffff'; // i
       context.lineWidth = brushStroke.getValue();
 
       // for 640x960 screensize

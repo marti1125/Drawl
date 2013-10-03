@@ -27,7 +27,7 @@
     var canvas = document.getElementById('sketchpad');
     var context = canvas.getContext('2d');
     var brushSize = 1;
-    var brushColor = 'rgba(0,0,0,1)';
+    var brushColor = '';
     var points = [];
 
     if($( window ).width() > 320) {
@@ -58,16 +58,17 @@
           //remove div, for first time use
           if(firstTimeUse == 1){
             $("#sketchpad").css("background-image","none")
-            context.fillStyle = 'rgba(0,0,0,1)'; // black
-            context.strokeStyle = 'rgba(0,0,0,1)'; // black
+            //context.fillStyle = 'rgba(0,0,0,1)'; // black
+            //context.strokeStyle = 'rgba(0,0,0,1)'; // black
           }
 
           if (context.lineWidth != brushSize) {
               context.lineWidth = brushSize;
           }
-          if (context.strokeStyle != brushColor) {
-              context.strokeStyle = brushColor;
-          }
+          // causes the eraser to get messed up
+          //if (context.strokeStyle != brushColor) {
+              //context.strokeStyle = brushColor;
+          //}
 
           context.beginPath();
           context.moveTo(coors.x, coors.y);
@@ -79,7 +80,6 @@
               mode: "begin"
           });
           this.isDrawing = true;
-          //alert(this.isDrawing);
        },
        touchmove: function(coors){
           if (this.isDrawing) {
@@ -145,7 +145,7 @@
                 context.lineWidth = pt.size;
                 begin = true;
             }
-            if (context.strokeStyle != pt.color) {
+            if (context.strokeStyle != pt.color && context.strokeStyle) {
                 context.strokeStyle = pt.color;
                 begin = true;
             }
@@ -164,6 +164,7 @@
     function undoLast() {
         points.pop();
         redrawAll();
+
     }
 
     var interval;
@@ -174,6 +175,7 @@
     }).bind('touchend', function(){
         clearInterval(interval);
     });
+
 
     // prevent elastic scrolling
     document.body.addEventListener('touchmove',function(event){
