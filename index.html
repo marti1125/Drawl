@@ -92,7 +92,7 @@
             <!-- <button type="button" class="btn btn-default"id="spraycan">Spray</button> -->
             <button type="button" class="btn btn-xs" id="btn-colorpicker"><img src="images/btns/btn-palette.png"></button>
             <button type="button" class="btn btn-xs" id="btn-brushsize"><img src="images/btns/btn-styles.png"></button>
-            <button type="button" class="btn btn-xs" id="undo">U</button>
+            <button type="button" class="btn btn-xs" id="btn-undo">U</button>
           </div>
           <div class="col-xs-3">
             <button type="button" class="btn btn-xs pull-right" id="btn-done"><img src="images/btns/btn-done.png"></button>
@@ -124,6 +124,7 @@
         <div class="toolbar" id="brushsize">
             <div class="col-xs-12">
               <!-- <p>Brush size</p> -->
+              <!-- <button id="brush5">5px Brush</button> -->
               <div id="brushStrokeSize" class="slider slider-horizontal" style="width: 160px;"></div>
               <p class="pull-right">
                 <button class="btn btn-xs" id="roundbrush"><img src="images/btns/btn-brush-round.png"></button>
@@ -300,6 +301,7 @@
     var BrushChange = function() {
       //set current brush stroke size
       context.lineWidth = brushStroke.getValue();
+      brushSize = brushStroke.getValue();
       //alert(brushStroke.getValue());
     };
 

@@ -21,8 +21,10 @@
     // get the canvas element and its context
     var canvas = document.getElementById('sketchpad');
     var context = canvas.getContext('2d');
-    //var brushSize = 20;
-    //var brushColor = "#ff0000";
+
+    //set initial brush size stroke here, so it's recorded.  it's not being recorded.
+    var brushSize = 1;
+    var brushColor = 'rgba(0, 0, 0, 0.1)';
     var points = [];
 
     if($( window ).width() > 320) {
@@ -56,12 +58,19 @@
           }
 
           context.beginPath();
+          if (context.lineWidth != brushSize) {
+              context.lineWidth = brushSize;
+          }
+          if (context.strokeStyle != brushColor) {
+              alert(brushColor)
+              context.strokeStyle = brushColor;
+          }
           context.moveTo(coors.x, coors.y);
           points.push({
               x: coors.x,
               y: coors.y,
-              //size: brushSize,
-              //color: brushColor,
+              size: brushSize,
+              color: brushColor,
               mode: "begin"
           });
           this.isDrawing = true;
@@ -74,8 +83,8 @@
              points.push({
                  x: coors.x,
                  y: coors.y,
-                 //size: brushSize,
-                 //color: brushColor,
+                 size: brushSize,
+                 color: brushColor,
                  mode: "draw"
              });
              context.stroke();
@@ -88,8 +97,8 @@
              points.push({
                  x: coors.x,
                  y: coors.y,
-                 //size: brushSize,
-                 //color: brushColor,
+                 size: brushSize,
+                 color: brushColor,
                  mode: "end"
              });
           }
@@ -177,14 +186,16 @@
 
             var begin = false;
 
-            // if (context.lineWidth != pt.size) {
-            //     context.lineWidth = pt.size;
-            //     begin = true;
-            // }
-            // if (context.strokeStyle != pt.color) {
-            //     context.strokeStyle = pt.color;
-            //     begin = true;
-            // }
+            // check to see if the brush size that was stored equals the current strokesize, if not, then set to brushsize up top
+            if (context.lineWidth != pt.size) {
+                context.lineWidth = pt.size;
+                begin = true;
+            }
+            if (context.strokeStyle != pt.color) {
+                alert(context.strokeStyle, pt.color);
+                context.strokeStyle = pt.color;
+                begin = true;
+            }
             if (pt.mode == "begin" || begin) {
                 context.beginPath();
                 context.moveTo(pt.x, pt.y);
@@ -205,16 +216,21 @@
     var interval;
 
     //for touchdown
-    $("#undo").bind('touchstart', function(){
+    $("#btn-undo").bind('touchstart', function(){
         interval = setInterval(undoLast, 50);
     }).bind('touchend', function(){
         clearInterval(interval);
     });
     //for mousedown
-    $("#undo").mousedown(function () {
+    $("#btn-undo").mousedown(function () {
         interval = setInterval(undoLast, 50);
     }).mouseup(function () {
         clearInterval(interval);
+    });
+
+    $("#brush5").click(function () {
+        brushSize = 5;
+        //alert("test");
     });
 
     // prevent elastic scrolling

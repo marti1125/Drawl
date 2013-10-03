@@ -1,11 +1,12 @@
 
-    var newBrushOpacity = 0.1; // change this value on the slider
+    var newBrushOpacity = 1; // change this value on the slider
     var brushStrokeSize = 1;
 
     // Colors
     $("#color-zero").click(function(){
       context.fillStyle = 'rgba(0,0,0,' + newBrushOpacity + ')'; // black
       context.strokeStyle = 'rgba(0,0,0,' + newBrushOpacity + ')'; // black
+      brushColor = context.fillStyle;
       //set the pencil button border
       $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-blk.png')")
                       .css("background-size","31px 31px")
@@ -16,6 +17,7 @@
     $("#color-one").click(function(){
       context.fillStyle = 'rgba(235,53,36,' + newBrushOpacity + ')'; // red
       context.strokeStyle = 'rgba(235,53,36,' + newBrushOpacity + ')'; // red
+      brushColor = context.fillStyle;
       $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-one.png')")
                       .css("background-size","31px 31px")
                       .css("background-repeat","no-repeat")
@@ -75,12 +77,6 @@
                       .css("background-repeat","no-repeat")
                       .css("background-position","center center");
     });
-
-    // Undo button
-    $("#btn-undo").click(function(){
-      //undo
-
-    })
 
     // toggle the color picker btn
     var i = 0;
