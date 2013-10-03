@@ -1,11 +1,12 @@
 
-    var newBrushOpacity = 0.1; // change this value on the slider
+    var newBrushOpacity = 1; // change this value on the slider
     var brushStrokeSize = 1;
 
     // Colors
     $("#color-zero").click(function(){
       context.fillStyle = 'rgba(0,0,0,' + newBrushOpacity + ')'; // black
       context.strokeStyle = 'rgba(0,0,0,' + newBrushOpacity + ')'; // black
+      brushColor = context.fillStyle;
       //set the pencil button border
       $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-blk.png')")
                       .css("background-size","31px 31px")
@@ -16,6 +17,7 @@
     $("#color-one").click(function(){
       context.fillStyle = 'rgba(235,53,36,' + newBrushOpacity + ')'; // red
       context.strokeStyle = 'rgba(235,53,36,' + newBrushOpacity + ')'; // red
+      brushColor = context.fillStyle;
       $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-one.png')")
                       .css("background-size","31px 31px")
                       .css("background-repeat","no-repeat")
@@ -25,6 +27,7 @@
     $("#color-two").click(function(){
       context.fillStyle = 'rgba(223,78,50,' + newBrushOpacity + ')'; // o
       context.strokeStyle = 'rgba(223,78,50,' + newBrushOpacity + ')'; // o
+      brushColor = context.fillStyle;
       $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-two.png')")
                       .css("background-size","31px 31px")
                       .css("background-repeat","no-repeat")
@@ -34,6 +37,7 @@
     $("#color-three").click(function(){
       context.fillStyle = 'rgba(223,171,48,' + newBrushOpacity + ')'; // y
       context.strokeStyle = 'rgba(223,171,48,' + newBrushOpacity + ')'; // y
+      brushColor = context.fillStyle;
       $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-three.png')")
                       .css("background-size","31px 31px")
                       .css("background-repeat","no-repeat")
@@ -43,6 +47,7 @@
     $("#color-four").click(function(){
       context.fillStyle = 'rgba(74,187,134,' + newBrushOpacity + ')'; // g
       context.strokeStyle = 'rgba(74,187,134,' + newBrushOpacity + ')'; // g
+      brushColor = context.fillStyle;
       $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-four.png')")
                       .css("background-size","31px 31px")
                       .css("background-repeat","no-repeat")
@@ -52,6 +57,7 @@
     $("#color-five").click(function(){
       context.fillStyle = 'rgba(52,152,219,' + newBrushOpacity + ')'; // b
       context.strokeStyle = 'rgba(52,152,219,' + newBrushOpacity + ')'; // b
+      brushColor = context.fillStyle;
       $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-five.png')")
                       .css("background-size","31px 31px")
                       .css("background-repeat","no-repeat")
@@ -61,6 +67,7 @@
     $("#color-six").click(function(){
       context.fillStyle = 'rgba(53,72,157,' + newBrushOpacity + ')'; // i
       context.strokeStyle = 'rgba(53,72,157,' + newBrushOpacity + ')'; // i
+      brushColor = context.fillStyle;
       $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-six.png')")
                       .css("background-size","31px 31px")
                       .css("background-repeat","no-repeat")
@@ -70,6 +77,7 @@
     $("#color-seven").click(function(){
       context.fillStyle = 'rgba(133,36,114,' + newBrushOpacity + ')'; // v
       context.strokeStyle = 'rgba(133,36,114,' + newBrushOpacity + ')'; // v
+      brushColor = context.fillStyle;
       $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-seven.png')")
                       .css("background-size","31px 31px")
                       .css("background-repeat","no-repeat")

@@ -26,8 +26,8 @@
     // get the canvas element and its context
     var canvas = document.getElementById('sketchpad');
     var context = canvas.getContext('2d');
-    var brushSize = 20;
-    var brushColor = "#ff0000";
+    var brushSize = 1;
+    var brushColor = 'rgba(0,0,0,1)';
     var points = [];
 
     if($( window ).width() > 320) {
@@ -58,8 +58,15 @@
           //remove div, for first time use
           if(firstTimeUse == 1){
             $("#sketchpad").css("background-image","none")
-            context.fillStyle = 'rgba(0,0,0,0.1)'; // black
-            context.strokeStyle = 'rgba(0,0,0,0.1)'; // black
+            context.fillStyle = 'rgba(0,0,0,1)'; // black
+            context.strokeStyle = 'rgba(0,0,0,1)'; // black
+          }
+
+          if (context.lineWidth != brushSize) {
+              context.lineWidth = brushSize;
+          }
+          if (context.strokeStyle != brushColor) {
+              context.strokeStyle = brushColor;
           }
 
           context.beginPath();
@@ -133,6 +140,7 @@
 
             var begin = false;
 
+            // check to see if the brush size that was stored equals the current strokesize, if not, then set to brushsize up top
             if (context.lineWidth != pt.size) {
                 context.lineWidth = pt.size;
                 begin = true;
@@ -161,7 +169,7 @@
     var interval;
 
     //for touchdown
-    $("#btn-undo").click(function(e){
+    $("#btn-undo").bind('touchstart', function(){
         interval = setInterval(undoLast, 50);
     }).bind('touchend', function(){
         clearInterval(interval);
