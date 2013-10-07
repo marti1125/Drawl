@@ -272,6 +272,9 @@
     })
     // Clear drawing
     $('#btn-new').click(function(){
+      //clear saved points
+      points = [];
+
       navigator.vibrate(100);
       canvas.width = canvas.width;
       $(".overlay").remove();
