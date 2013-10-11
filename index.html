@@ -49,21 +49,21 @@
         var portraitLock = screen.mozLockOrientation("portrait");
 
         // FFOS specific
-        if ($( window ).width() > 320 ) {
+        //if ($( window ).width() > 320 ) {
           //screensize at 640x960
-          $('button').css("height", "64px");
-          $('#maintoolbar button').css("width", "70px");
-          $("#sketchpad").attr("width", "580");
-          $("#sketchpad").attr("height", "910");
+          //$('button').css("height", "64px");
+          //$('#maintoolbar button').css("width", "70px");
+          //$("#sketchpad").attr("width", "580");
+          //$("#sketchpad").attr("height", "910");
           //push the brush size slider down a bit and make it a bit larger
-          $(".slider.slider-horizontal").css("top", "20px")
+          //$(".slider.slider-horizontal").css("top", "20px")
                                         .css("width", "260px");
           //$("body").html("This app only works on a mobile device!  Load this URL on your mobile device!");
-        } else {
+        //} else {
           //screensize at 320x480
           $("#sketchpad").attr("width", "320");
-          $("#sketchpad").attr("height", "456");
-        }
+          $("#sketchpad").attr("height", "656");
+        //}
 
 
       });
@@ -319,6 +319,7 @@
 
     //Eraser button
     $("#btn-eraser").click(function(){
+      alert("tset");
       context.fillStyle = '#ffffff'; // i
       context.strokeStyle = '#ffffff'; // i
       context.lineWidth = brushStroke.getValue();

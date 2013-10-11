@@ -229,31 +229,31 @@
 
     // Done button
     $("#btn-done").click(function(){
-
+      //alert("test");
       $("#container").append('<div class="overlay" style="position: absolute; top: 0; left: 0; background: rgba(0,0,0,0.5); width: 100%; height: 100%"></div');
 
-      if (isMobile.iOS()) {
-        var canvas = document.getElementById("sketchpad"); // get the canvas
-        var image = canvas.toDataURL("image/png"); // convert canvas to an image, .png
-        var ajax = new XMLHttpRequest();
-
-        var PageToSendTo = "script.php?";
-  			var VariablePlaceholder = "variableName=";
-  			var randomVariable = Math.ceil(Math.random() * 100);
-  			var UrlToSend = PageToSendTo + VariablePlaceholder + randomVariable;
-
-        ajax.open("POST",UrlToSend,true);
-        ajax.setRequestHeader('Content-Type', 'application/upload');
-        ajax.onreadystatechange=function() {
-          if (ajax.readyState == 4) {
-          			$("#btn-save").attr("href","images/"+ randomVariable + "-image.png");
-          		}
-        }
-        ajax.send(image);
-      }
+        //       if (isMobile.iOS()) {
+        //         var canvas = document.getElementById("sketchpad"); // get the canvas
+        //         var image = canvas.toDataURL("image/png"); // convert canvas to an image, .png
+        //         var ajax = new XMLHttpRequest();
+        //
+        //         var PageToSendTo = "script.php?";
+        // var VariablePlaceholder = "variableName=";
+        // var randomVariable = Math.ceil(Math.random() * 100);
+        // var UrlToSend = PageToSendTo + VariablePlaceholder + randomVariable;
+        //
+        //         ajax.open("POST",UrlToSend,true);
+        //         ajax.setRequestHeader('Content-Type', 'application/upload');
+        //         ajax.onreadystatechange=function() {
+        //           if (ajax.readyState == 4) {
+        //                $("#btn-save").attr("href","images/"+ randomVariable + "-image.png");
+        //              }
+        //         }
+        //         ajax.send(image);
+        //       }
 
       $( "#done-panel" ).animate({
-          bottom: "-20"
+          bottom: "-24"
         }, 200);
     })
     // Cancel button
