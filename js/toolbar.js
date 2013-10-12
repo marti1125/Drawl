@@ -30,14 +30,21 @@
     var newBrushOpacity = 1; // change this value on the slider
     var brushStrokeSize = 1;
 
+    //var n = "1";
+
+
+
     // Pencil button
     $("#btn-pencil").click(function(){
       //highlight this button
       //alert("test");
-      context.fillStyle = '#000000'; // i
-      context.strokeStyle = '#000000'; // i
-      //context.lineWidth = brushStroke.getValue();
-      context.lineWidth = "1";
+      //context.lineWidth = 20;
+      //context.fillStyle = '#000000'; // i
+      //context.strokeStyle = '#000000'; // i
+      //context.lineWidth = newBrushSize;
+
+
+      //alert(n);
       //alert(context.lineWidth);
       $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-blk.png')")
                       .css("background-size","31px 31px")
@@ -49,10 +56,10 @@
     //Eraser button
     $("#btn-eraser").click(function(){
       //alert("tset");
-      context.fillStyle = '#ffffff'; // i
-      context.strokeStyle = '#ffffff'; // i
+      //context.fillStyle = '#ffffff'; // i
+      //context.strokeStyle = '#ffffff'; // i
       //context.lineWidth = brushStroke.getValue();
-      context.lineWidth = "1";
+      //context.lineWidth = "1";
       //alert(context.lineWidth);
       brushColor = '#ffffff';
 

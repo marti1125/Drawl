@@ -8,14 +8,14 @@ A simple drawing app for Firefox OS.
 * add separate eraser strokes btn
 * add separate pencil strokes btn
 * add More Colors btn
-* make sure the Packaged File works
-* make sure it only works in Portrait mode for orientation
+* ~~make sure the Packaged File works
+* make sure it only works in Portrait mode for orientation~~
 * add intro screen?
-* fix drawing canvas height on Keon
+* ~~fix drawing canvas height on Keon~~
 * brush size slider doesnt work on Keon
-* eraser btn doesnt work on Keon
-* toolbar needs to go down a bit (brush size and color toolbar)
-* done btn panel needs to go higher
+* ~~eraser btn doesnt work on Keon~~
+* ~~toolbar needs to go down a bit (brush size and color toolbar)~~
+* ~~done btn panel needs to go higher~~
 
 ## Credits
 

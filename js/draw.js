@@ -32,7 +32,12 @@
     //canvas.height = 300;
     canvas.style.width  = '320px';
     canvas.style.height = '520px';
-    var brushSize = 1;
+
+    $('#brushSizeNew').change( function() {
+        brushSize = this.value;
+    });
+
+    var brushSize = 20;
     var brushColor = '#000000';
     var points = [];
 
