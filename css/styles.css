@@ -42,11 +42,14 @@ body {
 }
 
 #sketchpad {
-  //background: rgb(0,255,255);
+  //background: red;
+  height: 100%;
+  width: 100%;
 }
 
 canvas {
-  //background: rgb(0,255,255);
+  //background: rgb(10,255,155);
+  height: 100%;
 }
 
 #btn-pencil {

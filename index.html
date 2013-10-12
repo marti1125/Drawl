@@ -14,7 +14,7 @@
  -->
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes" />
 
     <!-- <link rel="stylesheet" type="text/css" href="css/base.css"> -->
@@ -35,34 +35,34 @@
      $( document ).ready(function() {
 
        // if on website then do the add to home screen
-       var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
-       var is_explorer = navigator.userAgent.indexOf('MSIE') > -1;
-       var is_firefox = navigator.userAgent.indexOf('Firefox') > -1;
-       var is_safari = navigator.userAgent.indexOf("Safari") > -1;
-       var is_Opera = navigator.userAgent.indexOf("Presto") > -1;
-       if ((is_chrome)&&(is_safari)) {is_safari=false;}
-       if (is_firefox) {
+       //var is_chrome = navigator.userAgent.indexOf('Chrome') > -1;
+       //var is_explorer = navigator.userAgent.indexOf('MSIE') > -1;
+       //var is_firefox = navigator.userAgent.indexOf('Firefox') > -1;
+       //var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+       //var is_Opera = navigator.userAgent.indexOf("Presto") > -1;
+       //if ((is_chrome)&&(is_safari)) {is_safari=false;}
+       //if (is_firefox) {
          //$("body").html('<button id="install"><span class="icon icon-add">add</span></button>')
          //alert('Its Firefox');
-       }
+       //}
 
-        var portraitLock = screen.mozLockOrientation("portrait");
+        //var portraitLock = screen.mozLockOrientation("portrait");
 
         // FFOS specific
         //if ($( window ).width() > 320 ) {
           //screensize at 640x960
           //$('button').css("height", "64px");
           //$('#maintoolbar button').css("width", "70px");
-          //$("#sketchpad").attr("width", "580");
-          //$("#sketchpad").attr("height", "910");
+          $("#sketchpad").attr("width", "320");
+          $("#sketchpad").attr("height", "480");
           //push the brush size slider down a bit and make it a bit larger
           //$(".slider.slider-horizontal").css("top", "20px")
-                                        .css("width", "260px");
+                                        //.css("width", "260px");
           //$("body").html("This app only works on a mobile device!  Load this URL on your mobile device!");
         //} else {
           //screensize at 320x480
-          $("#sketchpad").attr("width", "320");
-          $("#sketchpad").attr("height", "656");
+          //$("#sketchpad").attr("width", "320");
+          //$("#sketchpad").attr("height", "656");
         //}
 
 
@@ -178,124 +178,7 @@
   -->
 
   <script type="text/javascript" charset="utf-8">
-
-    // detect a mobile device
-    var isMobile = {
-        Android: function() {
-            return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function() {
-            return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function() {
-            return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function() {
-            return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function() {
-            return navigator.userAgent.match(/IEMobile/i);
-        },
-        any: function() {
-            return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-        }
-    };
-
-    //this works only for iOS/Android
-    if (isMobile.any()) {
-
-      // Hammertime onRELEASE, move the toolbar back up
-      var release = document.getElementById('sketchpad');
-      var hammertime_release = Hammer(release).on("release", function(event) {
-          $("#maintoolbar").animate({
-            bottom: "0"
-          }, 200);
-          $( "#brushsize.toolbar" ).animate({
-              bottom: "+=200"
-          }, 200);
-          $( "#colorpicker.toolbar" ).animate({
-              bottom: "+=240"
-          }, 200);
-      });
-
-      // Hammertime onTOUCH, move the toolbar down
-      var touch = document.getElementById('sketchpad');
-      var hammertime_hold = Hammer(touch).on("touch", function(event) {
-          // move the toolbar down
-          $("#maintoolbar").animate({
-            bottom: "-100"
-          }, 200);
-          // move the brushsize toolbar down if it's up
-          $( "#brushsize.toolbar" ).animate({
-              bottom: "-=200"
-          }, 200);
-          $( "#colorpicker.toolbar" ).animate({
-              bottom: "-=240"
-          }, 200);
-      });
-
-    } else {
-
-      // FFOS specific
-      if ($( window ).width() > 320 ) {
-        //screensize large
-        //touch events for FFOS
-        canvas.addEventListener('touchstart',function(event){
-          $( "#maintoolbar" ).animate({
-              bottom: "-80"
-            }, 200);
-          $( "#brushsize.toolbar" ).animate({
-              bottom: "-=200"
-          }, 200);
-          $( "#colorpicker.toolbar" ).animate({
-              bottom: "-=240"
-          }, 200);
-        }, false);
-
-        canvas.addEventListener('touchend',function(event){
-          $( "#maintoolbar" ).animate({
-              bottom: "0"
-            }, 200);
-          // move the brushsize toolbar down if it's up
-          $( "#brushsize.toolbar" ).animate({
-              bottom: "+=200"
-          }, 200);
-          $( "#colorpicker.toolbar" ).animate({
-              bottom: "+=240"
-          }, 200);
-        }, false);
-
-      } else {
-        //screensize small
-        //touch events for FFOS
-        canvas.addEventListener('touchstart',function(event){
-          $( "#maintoolbar" ).animate({
-              top: "500"
-            }, 200);
-          $( "#brushsize.toolbar" ).animate({
-              bottom: "-=200"
-          }, 200);
-          $( "#colorpicker.toolbar" ).animate({
-              bottom: "-=240"
-          }, 200);
-        }, false);
-
-        canvas.addEventListener('touchend',function(event){
-          $( "#maintoolbar" ).animate({
-              top: "396"
-            }, 200);
-          // move the brushsize toolbar down if it's up
-          $( "#brushsize.toolbar" ).animate({
-              bottom: "+=200"
-          }, 200);
-          $( "#colorpicker.toolbar" ).animate({
-              bottom: "+=240"
-          }, 200);
-        }, false);
-      }
-
-    }
-
+  $( document ).ready(function() {
     // Change the Brush Stroke
     var BrushChange = function() {
       //set current brush stroke size
@@ -304,53 +187,7 @@
       //alert(brushStroke.getValue());
     };
 
-    // Pencil button
-    $("#btn-pencil").click(function(){
-      //highlight this button
-      context.fillStyle = '#000000'; // i
-      context.strokeStyle = '#000000'; // i
-      context.lineWidth = brushStroke.getValue();
-      $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-blk.png')")
-                      .css("background-size","31px 31px")
-                      .css("background-repeat","no-repeat")
-                      .css("background-position","center center");
-      brushColor = '#000000';
-    })
 
-    //Eraser button
-    $("#btn-eraser").click(function(){
-      alert("tset");
-      context.fillStyle = '#ffffff'; // i
-      context.strokeStyle = '#ffffff'; // i
-      context.lineWidth = brushStroke.getValue();
-      brushColor = '#ffffff';
-
-      // for 640x960 screensize
-      if ($( window ).width() > 320 ) {
-        if(n == 0 || i == 1) {
-          n = 1;
-          $( "#colorpicker.toolbar" ).animate({
-              bottom: "-340"
-            }, 200);
-        } else {
-
-        }
-      } else {
-        if(i == 1 && n == 0) {
-        }
-        if(i == 1 && n == 1) {
-        }
-        if(n == 0 || i == 1) {
-          n = 1;
-          $( "#colorpicker.toolbar" ).animate({
-              bottom: "-240"
-            }, 200);
-        } else {
-
-        }
-      }
-
-    })
 
     // http://www.eyecon.ro/bootstrap-slider/
     //get brush stroke from slider
@@ -358,6 +195,8 @@
       tooltip: "hide"
     }).on('slide', BrushChange)
       .data('slider');
+
+  });
 
 
   </script>

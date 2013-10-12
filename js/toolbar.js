@@ -1,9 +1,92 @@
+    //screensize small
+    //touch events for FFOS
+    canvas.addEventListener('touchstart',function(event){
+      //alert("touchdown");
+      $( "#maintoolbar" ).animate({
+          top: "500"
+        }, 200);
+      $( "#brushsize.toolbar" ).animate({
+          bottom: "-=200"
+      }, 200);
+      $( "#colorpicker.toolbar" ).animate({
+          bottom: "-=240"
+      }, 200);
+    }, false);
+
+    canvas.addEventListener('touchend',function(event){
+      $( "#maintoolbar" ).animate({
+          top: "396"
+        }, 200);
+      // move the brushsize toolbar down if it's up
+      $( "#brushsize.toolbar" ).animate({
+          bottom: "+=200"
+      }, 200);
+      $( "#colorpicker.toolbar" ).animate({
+          bottom: "+=240"
+      }, 200);
+    }, false);
+
 
     var newBrushOpacity = 1; // change this value on the slider
     var brushStrokeSize = 1;
 
+    // Pencil button
+    $("#btn-pencil").click(function(){
+      //highlight this button
+      //alert("test");
+      context.fillStyle = '#000000'; // i
+      context.strokeStyle = '#000000'; // i
+      //context.lineWidth = brushStroke.getValue();
+      context.lineWidth = "1";
+      //alert(context.lineWidth);
+      $("#btn-pencil").css("background","url('../images/btns/btn-brush-color-blk.png')")
+                      .css("background-size","31px 31px")
+                      .css("background-repeat","no-repeat")
+                      .css("background-position","center center");
+      brushColor = '#000000';
+    })
+
+    //Eraser button
+    $("#btn-eraser").click(function(){
+      //alert("tset");
+      context.fillStyle = '#ffffff'; // i
+      context.strokeStyle = '#ffffff'; // i
+      //context.lineWidth = brushStroke.getValue();
+      context.lineWidth = "1";
+      //alert(context.lineWidth);
+      brushColor = '#ffffff';
+
+      // for 640x960 screensize
+      if ($( window ).width() > 320 ) {
+        if(n == 0 || i == 1) {
+          n = 1;
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "-340"
+            }, 200);
+        } else {
+
+        }
+      } else {
+        if(i == 1 && n == 0) {
+        }
+        if(i == 1 && n == 1) {
+        }
+        if(n == 0 || i == 1) {
+          n = 1;
+          $( "#colorpicker.toolbar" ).animate({
+              bottom: "-240"
+            }, 200);
+        } else {
+
+        }
+      }
+
+    })
+
+
     // Colors
     $("#color-zero").click(function(){
+
       context.fillStyle = 'rgba(0,0,0,' + newBrushOpacity + ')'; // black
       context.strokeStyle = 'rgba(0,0,0,' + newBrushOpacity + ')'; // black
       brushColor = context.fillStyle;

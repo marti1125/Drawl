@@ -1,4 +1,4 @@
-// Square Brush
+    // Square Brush
     $("#squarebrush").click(function(){
       context.lineCap = 'square';
     });
@@ -30,19 +30,11 @@
     var brushColor = '#000000';
     var points = [];
 
-    if($( window ).width() > 320) {
-      //for large screensize
-      $("#sketchpad").css("background-image","url('../images/btns/startup-image.png')")
-                     .css("background-position","40% center")
-                     .css("background-repeat","no-repeat")
-                     .css("background-size","30%")
-    } else {
-      //for small screensize
-      $("#sketchpad").css("background-image","url('../images/btns/startup-image.png')")
-                     .css("background-position","center center")
-                     .css("background-repeat","no-repeat")
-                     .css("background-size","30%")
-    }
+    //for small screensize
+    $("#sketchpad").css("background-image","url('../images/btns/startup-image.png')")
+                   .css("background-position","center center")
+                   .css("background-repeat","no-repeat")
+                   .css("background-size","30%")
 
 
 
