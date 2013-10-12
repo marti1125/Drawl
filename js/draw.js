@@ -37,7 +37,7 @@
         brushSize = this.value;
     });
 
-    var brushSize = 20;
+    var brushSize = 1;
     var brushColor = '#000000';
     var points = [];
 
