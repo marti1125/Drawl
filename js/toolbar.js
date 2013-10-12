@@ -3,7 +3,7 @@
     canvas.addEventListener('touchstart',function(event){
       //alert("touchdown");
       $( "#maintoolbar" ).animate({
-          top: "500"
+          bottom: "-100"
         }, 200);
       $( "#brushsize.toolbar" ).animate({
           bottom: "-=200"
@@ -15,7 +15,7 @@
 
     canvas.addEventListener('touchend',function(event){
       $( "#maintoolbar" ).animate({
-          top: "396"
+          bottom: "0"
         }, 200);
       // move the brushsize toolbar down if it's up
       $( "#brushsize.toolbar" ).animate({
@@ -222,7 +222,7 @@
         if(i == 0 || n == 1) {
           i = 1;
           $( "#colorpicker.toolbar" ).animate({
-              bottom: "64"
+              bottom: "62"
             }, 200);
           $( "#brushsize.toolbar" ).animate({
               bottom: "-200"
@@ -296,7 +296,7 @@
           n = 1;
           //alert("test");
           $( "#brushsize.toolbar" ).animate({
-              bottom: "64"
+              bottom: "62"
             }, 200);
           $( "#colorpicker.toolbar" ).animate({
               bottom: "-240"
@@ -373,6 +373,9 @@
     });
 
 		$("#addDrawing").click(function(){
+		    //clear saved points
+        points = [];
+
 		    navigator.vibrate(200);
 		    // unplug device to test
 	      //addDrawing();
