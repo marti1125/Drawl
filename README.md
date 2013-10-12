@@ -10,7 +10,7 @@ A simple drawing app for Firefox OS.
 * add More Colors btn
 * ~~make sure the Packaged File works
 * make sure it only works in Portrait mode for orientation~~
-* add intro screen?
+* ~~add intro screen?~~
 * ~~fix drawing canvas height on Keon~~
 * ~~brush size slider doesnt work on Keon~~
 * ~~eraser btn doesnt work on Keon~~
