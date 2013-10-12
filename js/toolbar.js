@@ -1,3 +1,12 @@
+
+    // intro screen
+    $("#intro-screen").click(function(){
+      //alert("test");
+      $("#intro-screen").fadeOut(300);
+      //$("#intro-screen").css("z-index","-9999");
+    })
+
+
     //screensize small
     //touch events for FFOS
     canvas.addEventListener('touchstart',function(event){
