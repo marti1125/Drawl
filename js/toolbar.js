@@ -7,33 +7,7 @@
     })
 
 
-    //screensize small
-    //touch events for FFOS
-    // canvas.addEventListener('touchstart',function(event){
-    //   //alert("touchdown");
-    //   $( "#maintoolbar" ).animate({
-    //       bottom: "-100"
-    //     }, 200);
-    //   $( "#brushsize.toolbar" ).animate({
-    //       bottom: "-=200"
-    //   }, 200);
-    //   $( "#colorpicker.toolbar" ).animate({
-    //       bottom: "-=240"
-    //   }, 200);
-    // }, false);
-    //
-    // canvas.addEventListener('touchend',function(event){
-    //   $( "#maintoolbar" ).animate({
-    //       bottom: "0"
-    //     }, 200);
-    //   // move the brushsize toolbar down if it's up
-    //   $( "#brushsize.toolbar" ).animate({
-    //       bottom: "+=200"
-    //   }, 200);
-    //   $( "#colorpicker.toolbar" ).animate({
-    //       bottom: "+=240"
-    //   }, 200);
-    // }, false);
+
 
 
     var newBrushOpacity = 1; // change this value on the slider
@@ -406,6 +380,34 @@
           }, 200);
         }
 		});
+
+		//screensize small
+    //touch events for FFOS
+    // canvas.addEventListener('touchstart',function(event){
+    //   //alert("touchdown");
+    //   $( "#maintoolbar" ).animate({
+    //       bottom: "-100"
+    //     }, 200);
+    //   $( "#brushsize.toolbar" ).animate({
+    //       bottom: "-=200"
+    //   }, 200);
+    //   $( "#colorpicker.toolbar" ).animate({
+    //       bottom: "-=240"
+    //   }, 200);
+    // }, false);
+    //
+    // canvas.addEventListener('touchend',function(event){
+    //   $( "#maintoolbar" ).animate({
+    //       bottom: "0"
+    //     }, 200);
+    //   // move the brushsize toolbar down if it's up
+    //   $( "#brushsize.toolbar" ).animate({
+    //       bottom: "+=200"
+    //   }, 200);
+    //   $( "#colorpicker.toolbar" ).animate({
+    //       bottom: "+=240"
+    //   }, 200);
+    // }, false);
 
 		// undo button
 
