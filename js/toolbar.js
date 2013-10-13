@@ -1,6 +1,6 @@
 
     // intro screen
-    $("#intro-screen").click(function(){
+    $("#btn-start").click(function(){
       //alert("test");
       $("#intro-screen").fadeOut(300);
       //$("#intro-screen").css("z-index","-9999");
