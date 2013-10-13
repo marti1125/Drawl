@@ -26,12 +26,23 @@
     // get the canvas element and its context
     var canvas = document.getElementById('sketchpad');
     var context = canvas.getContext('2d');
-    //canvas.width  = 320;
-    //canvas.height = 520;
-    //canvas.width  = 400;
-    //canvas.height = 300;
+
+    //large screensize
+    if ($( window ).width() > 320) {
+      //alert("large");
+      canvas.width  = 320;
+      canvas.height = 520;
+      canvas.style.width  = '320px';
+      canvas.style.height = '520px';
+    }
+    //small screen size
+    //alert("small");
+    canvas.width  = 320;
+    canvas.height = 520;
     canvas.style.width  = '320px';
-    canvas.style.height = '100%';
+    canvas.style.height = '520px';
+
+
 
     $('#brushSizeNew').change( function() {
         brushSize = this.value;
