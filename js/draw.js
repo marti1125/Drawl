@@ -26,12 +26,12 @@
     // get the canvas element and its context
     var canvas = document.getElementById('sketchpad');
     var context = canvas.getContext('2d');
-    canvas.width  = 320;
-    canvas.height = 520;
+    //canvas.width  = 320;
+    //canvas.height = 520;
     //canvas.width  = 400;
     //canvas.height = 300;
     canvas.style.width  = '320px';
-    canvas.style.height = '520px';
+    canvas.style.height = '100%';
 
     $('#brushSizeNew').change( function() {
         brushSize = this.value;
