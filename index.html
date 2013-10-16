@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="css/grid.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/styles.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/slider.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/seekbars.css" rel="stylesheet">
 
     <title>Drawl</title>
 
@@ -97,7 +98,16 @@
             <div class="col-xs-12">
               <!-- <p>Brush size</p> -->
 
-              <input type="range" name="points" min="1" max="10" id="brushSizeNew">
+              <section role="region" class="pull-left">
+                <div role="slider" aria-valuemin="0" aria-valuenow="1" aria-valuemax="100" aria-valuetext="slider description">
+                  <div>
+                    <progress value="80" max="100" id="newProgressBar"></progress>
+                    <button id="handler">handler</button>
+                  </div>
+                </div>
+              </section>
+
+              <!-- <input type="range" name="points" min="1" max="10" id="brushSizeNew"> -->
 
               <!-- <div id="brushStrokeSize" class="slider slider-horizontal" style="width: 160px;"></div> -->
               <p class="pull-right">
@@ -147,6 +157,7 @@
   <script type="text/javascript" src="js/modernizr.js"></script>
   <script type="text/javascript" src="js/jquery.hammer.min.js"></script>
   <script type="text/javascript" src="js/modal.js"></script>
+  <script type="text/javascript" defer src="js/seekbars.js"></script>
 
   <!--
       Loosely based on fxosstub: https://github.com/Jaxo/fxosstub

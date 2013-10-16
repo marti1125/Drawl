@@ -44,8 +44,17 @@
 
 
 
-    $('#brushSizeNew').change( function() {
-        brushSize = this.value;
+    //$('#brushSizeNew').change( function() {
+        //brushSize = this.value;
+    //});
+
+    $("#handler").bind('touchstart', function(){
+        //alert("start");
+    }).bind('touchend', function(){
+        //alert("stop");
+        var progressBarValue = Math.round($('progress:first').prop('value') * 10);
+        brushSize = progressBarValue;
+        //alert(progressBarValue);
     });
 
     var brushSize = 1;
