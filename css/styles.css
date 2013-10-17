@@ -151,6 +151,14 @@ input:focus { outline: none; }
   //background: none;
 }
 
+#roundbrush {
+  background: none;
+}
+
+#squarebrush {
+  background: none;
+}
+
 #brushsize button img{
   width: 26px;
   height: 26px;
