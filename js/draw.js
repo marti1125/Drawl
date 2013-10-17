@@ -42,8 +42,6 @@
     canvas.style.width  = '320px';
     canvas.style.height = '520px';
 
-
-
     //$('#brushSizeNew').change( function() {
         //brushSize = this.value;
     //});
@@ -51,10 +49,11 @@
     $("#handler").bind('touchstart', function(){
         //alert("start");
     }).bind('touchend', function(){
-        //alert("stop");
         var progressBarValue = Math.round($('progress:first').prop('value') * 10);
+        if (progressBarValue == 0) {
+          progressBarValue = 1;
+        }
         brushSize = progressBarValue;
-        //alert(progressBarValue);
     });
 
     var brushSize = 1;

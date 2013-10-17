@@ -8,7 +8,7 @@ div[role="slider"] {
 
 div[role="slider"] > div {
   display: block;
-  overflow: hidden;
+  //overflow: hidden;
   padding: 0;
   position: relative;
   height: 100%;
@@ -65,7 +65,7 @@ div[role="slider"] button {
   background: #000;
   font: 0/0 a;
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 0;
   margin: -1.5rem 0 0 -1.6rem;
   border-radius: 3.2rem;

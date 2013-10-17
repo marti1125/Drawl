@@ -118,6 +118,11 @@ input#brushSizeNew {
   background: #999;
 }
 
+#sliderarea {
+  margin-left: 18px;
+  margin-top: -4px;
+}
+
 input[type="range"]{
   -webkit-appearance:none;
   -moz-apperance:none;
