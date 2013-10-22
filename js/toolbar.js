@@ -181,7 +181,7 @@
         if(i == 0 || n == 1) {
           i = 1;
           $( "#colorpicker.toolbar" ).animate({
-              bottom: "95"
+              bottom: "62"
             }, 200);
           $( "#brushsize.toolbar" ).animate({
               bottom: "-300"
@@ -254,7 +254,7 @@
           n = 1;
           //alert("test");
           $( "#brushsize.toolbar" ).animate({
-              bottom: "95"
+              bottom: "62"
             }, 200);
           $( "#colorpicker.toolbar" ).animate({
               bottom: "-340"

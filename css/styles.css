@@ -85,10 +85,28 @@ canvas {
   background-repeat: no-repeat;
   width: 31px;
   height: 31px;
+  opacity: 0.7;
 }
 
 #btn-eraser {
   //border-bottom: 1px solid rgb(255,255,255);
+  opacity: 0.7;
+}
+
+#btn-colorpicker {
+  opacity: 0.7;
+}
+
+#btn-brushsize {
+  opacity: 0.7;
+}
+
+#btn-undo {
+  opacity: 0.7;
+}
+
+#btn-done {
+  opacity: 0.7;
 }
 
 #footer {
@@ -121,6 +139,7 @@ input#brushSizeNew {
 #sliderarea {
   margin-left: 18px;
   margin-top: -4px;
+  opacity: 0.7;
 }
 
 input[type="range"]{
@@ -153,10 +172,12 @@ input:focus { outline: none; }
 
 #roundbrush {
   background: none;
+  opacity: 0.7;
 }
 
 #squarebrush {
   background: none;
+  opacity: 0.7;
 }
 
 #brushsize button img{
