@@ -43,7 +43,7 @@ function addDrawing() {
       }
 
       var photofile   = new Blob( [ asArray.buffer ], {type: "image/png"} );
-      var mainphoto = pictures.addNamed(photofile, "DCIM/MISC/my-drawings" + count + ".png");
+      var mainphoto = pictures.addNamed(photofile, "DCIM/FFOS-Drawl-App-Imgs/my-drawings" + count + ".png");
 
       refreshCanvas();
 
