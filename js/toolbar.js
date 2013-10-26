@@ -19,6 +19,7 @@
 
     // Pencil button
     $("#btn-pencil").click(function(){
+      $("#btn-eraser").removeClass('toolSelected');
       //highlight this button
       //alert("test");
       //context.lineWidth = 20;
@@ -38,6 +39,7 @@
 
     //Eraser button
     $("#btn-eraser").click(function(){
+      $(this).addClass('toolSelected');      
       //alert("tset");
       //context.fillStyle = '#ffffff'; // i
       //context.strokeStyle = '#ffffff'; // i
@@ -160,7 +162,7 @@
     // toggle the color picker btn
     var i = 0;
     $("#btn-colorpicker").on('click', function(){
-
+      $("#btn-eraser").removeClass('toolSelected');
       // for 640x960 screensize
       if ($( window ).width() > 320 ) {
         if(i == 0 && n == 1) {
@@ -231,7 +233,7 @@
     // toggle the brushsize btn
     var n = 0;
     $("#btn-brushsize").on('click', function(){
-
+      $("#btn-eraser").removeClass('toolSelected');
       // for 640x960 screensize
       if ($( window ).width() > 320 ) {
         if(i == 1 && n == 0) {
@@ -301,8 +303,7 @@
     });
 
     // Done button
-    $("#btn-done").click(function(){
-      //alert("test");
+    $("#btn-done").click(function(){           
       $("#container").append('<div class="overlay" style="position: absolute; top: 0; left: 0; background: rgba(0,0,0,0.5); width: 100%; height: 100%"></div');
 
         //       if (isMobile.iOS()) {

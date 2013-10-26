@@ -123,7 +123,7 @@ canvas {
   border-radius: 0px;
 }
 
-#maintoolbar button#btn-eraser, button#btn-colorpicker, button#btn-brushsize, button#btn-done, button#btn-undo {
+#maintoolbar, button#btn-colorpicker, button#btn-brushsize, button#btn-done, button#btn-undo {
   background: none;
 }
 
@@ -277,6 +277,10 @@ button#color-seven {
 
 .brushSelected {
 	background: #00BFFF;
+}
+
+.toolSelected {
+  background: #00BFFF;
 }
 
 /*body {
