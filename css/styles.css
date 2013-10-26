@@ -170,13 +170,11 @@ input:focus { outline: none; }
   //background: none;
 }
 
-#roundbrush {
-  background: none;
+#roundbrush { 
   opacity: 0.7;
 }
 
-#squarebrush {
-  background: none;
+#squarebrush {  
   opacity: 0.7;
 }
 
@@ -277,6 +275,9 @@ button#color-seven {
   font-family: FiraSansOT-Regular;
 }
 
+.brushSelected {
+	background: #00BFFF;
+}
 
 /*body {
   font-family: -apple-system-font;

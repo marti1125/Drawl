@@ -1,11 +1,15 @@
     // Square Brush
     $("#squarebrush").click(function(){
       context.lineCap = 'square';
+	  $("#roundbrush").removeClass('brushSelected');
+	  $(this).addClass('brushSelected');
     });
 
     // Round Brush
     $("#roundbrush").click(function(){
       context.lineCap = 'round';
+	  $("#squarebrush").removeClass('brushSelected');
+	  $(this).addClass('brushSelected');
     });
 
     $("#startup").click(function(){
