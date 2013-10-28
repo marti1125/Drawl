@@ -6,12 +6,13 @@ A simple drawing app for Firefox OS.
 
 * https://github.com/Jaxo/fxosstub
 * http://robnyman.github.com/Firefox-OS-Boilerplate-App/
-* http://www.eyecon.ro/bootstrap-slider/
 * http://tenderlovingcode.com/blog/web-apps/html5-canvas-drawing-on-ipad/
 * http://getbootstrap.com/
+* Firefox OS Building Blocks
 
 ## Contributors
 
-* [Aaron Druck](https://www.whatthedruck.com/)
 * [Maureen Hanratty](http://www.mhanratty.com)
+* [Aaron Druck](https://www.whatthedruck.com/)
+* [Willy Aguirre](https://github.com/marti1125)
 
