@@ -123,7 +123,7 @@ canvas {
   border-radius: 0px;
 }
 
-#maintoolbar button#btn-eraser, button#btn-colorpicker, button#btn-brushsize, button#btn-done, button#btn-undo {
+#maintoolbar, button#btn-colorpicker, button#btn-brushsize, button#btn-done, button#btn-undo {
   background: none;
 }
 
@@ -170,13 +170,11 @@ input:focus { outline: none; }
   //background: none;
 }
 
-#roundbrush {
-  background: none;
+#roundbrush { 
   opacity: 0.7;
 }
 
-#squarebrush {
-  background: none;
+#squarebrush {  
   opacity: 0.7;
 }
 
@@ -277,6 +275,13 @@ button#color-seven {
   font-family: FiraSansOT-Regular;
 }
 
+.brushSelected {
+	background: #00BFFF;
+}
+
+.toolSelected {
+  background: #00BFFF;
+}
 
 /*body {
   font-family: -apple-system-font;

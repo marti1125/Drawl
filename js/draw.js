@@ -1,11 +1,15 @@
     // Square Brush
     $("#squarebrush").click(function(){
       context.lineCap = 'square';
+	  $("#roundbrush").removeClass('brushSelected');
+	  $(this).addClass('brushSelected');
     });
 
     // Round Brush
     $("#roundbrush").click(function(){
       context.lineCap = 'round';
+	  $("#squarebrush").removeClass('brushSelected');
+	  $(this).addClass('brushSelected');
     });
 
     $("#startup").click(function(){
@@ -244,6 +248,7 @@
 
     //for touchdown
     $("#btn-undo").bind('touchstart', function(){
+        $("#btn-eraser").removeClass('toolSelected');
         interval = setInterval(undoLast, 50);
     }).bind('touchend', function(){
         clearInterval(interval);
@@ -251,6 +256,7 @@
 
     //for mouse
     $("#btn-undo").mousedown(function () {
+        $("#btn-eraser").removeClass('toolSelected');
         interval = setInterval(undoLast, 50);
     }).mouseup(function () {
         clearInterval(interval);
