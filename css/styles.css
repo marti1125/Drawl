@@ -1,18 +1,287 @@
-#canvasArea { 
+/*FIX ME need to add button active states*/
+/*button:active {
+  border: 2px solid #000;
+}*/
+
+@font-face {
+    font-family: FiraSansOT-Bold;
+    src: url('../../fonts/FiraSansOT-Bold.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: FiraSansOT-Medium;
+    src: url('../../fonts/FiraSansOT-Medium.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: FiraSansOT-Regular;
+    src: url('../../fonts/FiraSansOT-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+  //background: #fff;
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#intro-screen {
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  background: #2d2d2d;
+}
+
+.main-text {
+  margin: 30% auto;
+  text-align: center;
+  padding: 0px 20px;
+}
+
+.main-text img {
+  width: 300px;
+  height: 300px;
+}
+
+
+#startup {
+  font-family: FiraSansOT-Regular;
+  position: absolute;
+  top: 30%;
+  width: 200px;
+  left: 19%;
+}
+
+#canvasArea {
   position: relative;
 }
-#imageView {
-  border: 1px solid black;
-  height:380px;
+
+#sketchpad {
+  //background: red;
+  height: 100%;
+  width: 100%;
 }
+
+canvas {
+  //background: rgb(10,255,155);
+  height: 100%;
+}
+
+#btn-pencil {
+  //border-bottom: 1px solid rgb(0,0,0);
+  background: url('../images/btns/btn-brush.png');
+  background-size: 31px 31px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 31px;
+  height: 31px;
+  opacity: 0.7;
+}
+
+#btn-eraser {
+  //border-bottom: 1px solid rgb(255,255,255);
+  opacity: 0.7;
+}
+
+#btn-colorpicker {
+  opacity: 0.7;
+}
+
+#btn-brushsize {
+  opacity: 0.7;
+}
+
+#btn-undo {
+  opacity: 0.7;
+}
+
+#btn-done {
+  opacity: 0.7;
+}
+
+#footer {
+  background: orange;
+  height: 20% !important;
+  overflow: hidden;
+}
+
+#maintoolbar {
+  background: rgba(249,249,249,0.9);
+}
+
+#maintoolbar #btn-pencil {
+  border-radius: 0px;
+}
+
+#maintoolbar, button#btn-colorpicker, button#btn-brushsize, button#btn-done, button#btn-undo {
+  background: none;
+}
+
+#maintoolbar button img{
+  width: 28px;
+  height: 28px;
+}
+
+input#brushSizeNew {
+  background: #999;
+}
+
+#sliderarea {
+  margin-left: 18px;
+  margin-top: -4px;
+  opacity: 0.7;
+}
+
+input[type="range"]{
+  -webkit-appearance:none;
+  -moz-apperance:none;
+  //width:100%;
+  height:1px;
+  border-radius: 8px;
+}
+
+input::-moz-range-thumb{
+  -webkit-appearance:none;
+  -moz-apperance:none;
+  width:20px;
+  height:20px;
+  -webkit-border-radius:20px;
+  -moz-border-radius:20px;
+  -ms-border-radius:20px;
+  -o-border-radius:20px;
+  border-radius:20px;
+  background: #000;
+}
+
+input:focus { outline: none; }
+
+
+#brushsize button {
+  //background: none;
+}
+
+#roundbrush { 
+  opacity: 0.7;
+}
+
+#squarebrush {  
+  opacity: 0.7;
+}
+
+#brushsize button img{
+  width: 26px;
+  height: 26px;
+}
+
+#brushsize.toolbar {
+  bottom: -100px;
+}
+
+#colorpicker.toolbar {
+  bottom: -100px;
+}
+
 .toolbar {
-  background: #ccc;
-  position: absolute;
-  bottom: -40px;
+  background: rgba(249,249,249,0.9);
+  position: fixed;
+  bottom: 0px;
   width: 100%;
   //height: 20px;
 }
 
+button#color-zero {
+  background: rgb(0,0,0);
+  border: 0px;
+  border-radius: 2px;
+  height: 40px;
+  width: 40px;
+}
+
+button#color-one {
+  background: rgb(235,53,36);
+  border: 0px;
+  border-radius: 2px;
+  height: 40px;
+  width: 40px;
+}
+
+button#color-two {
+  background: rgb(223,78,50);
+  border: 0px;
+  border-radius: 2px;
+  height: 40px;
+  width: 40px;
+}
+
+button#color-three {
+  background: rgb(223,171,48);
+  border: 0px;
+  border-radius: 2px;
+  height: 40px;
+  width: 40px;
+}
+
+button#color-four {
+  background: rgb(74,187,134);
+  border: 0px;
+  border-radius: 2px;
+  height: 40px;
+  width: 40px;
+}
+
+button#color-five {
+  background: rgb(52,152,219);
+  border: 0px;
+  border-radius: 2px;
+  height: 40px;
+  width: 40px;
+}
+
+button#color-six {
+  background: rgb(53,72,157);
+  border: 0px;
+  border-radius: 2px;
+  height: 40px;
+  width: 40px;
+}
+
+button#color-seven {
+  background: rgb(133,36,114);
+  border: 0px;
+  border-radius: 2px;
+  height: 40px;
+  width: 40px;
+}
+
+.btn-primary {
+  background-color: #2980b9;
+}
+
+#done-panel {
+  position: fixed;
+  width: 100%;
+  bottom: -300px;
+  z-index: 9999;
+  font-family: FiraSansOT-Regular;
+}
+
+.brushSelected {
+	background: #00BFFF;
+}
+
+.toolSelected {
+  background: #00BFFF;
+}
 
 /*body {
   font-family: -apple-system-font;

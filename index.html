@@ -1,132 +1,163 @@
 <!DOCTYPE html>
 <html>
-<!-- 
+<!--
     Exchange the line above for this to enable offline support
     <html manifest="manifest.appcache">
 
     Please make your homework before doing this:
         http://www.alistapart.com/articles/application-cache-is-a-douchebag/
         http://appcachefacts.info
-    
-    This might be necessary to set up on your server, to make sure 
+
+    This might be necessary to set up on your server, to make sure
     files are updated when the appcache file itself is:
         https://github.com/robnyman/Firefox-OS-Boilerplate-App/blob/gh-pages/.htaccess
  -->
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- <link rel="stylesheet" type="text/css" href="css/base.css"> -->
     <!-- <link rel="stylesheet" type="text/css" href="css/headers.css"> -->
     <!-- <link rel="stylesheet" type="text/css" href="css/buttons.css"> -->
-    <link rel="stylesheet" type="text/css" href="css/toolbars.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/toolbars.css"> -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/grid.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/styles.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="http://www.eyecon.ro/bootstrap-slider/css/slider.css" rel="stylesheet">
-    
+    <link rel="stylesheet" type="text/css" href="css/slider.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/seekbars.css" rel="stylesheet">
+
     <title>Drawl</title>
-    
-    <style type="text/css" media="screen">
-      #done-panel {
-        position: absolute;
-        bottom: -100;
-      }
-      
-    </style>
-    
+
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+
+
+
 </head>
 
 <body>
-  
-    <div id="top">
-      <canvas id="sketchpad" width="320" height="392">
-        Sorry, your browser is not supported.
-      </canvas>		
+
+	<!-- install app from URL -->
+	<!-- <button id="install"><span class="icon icon-add">add</span></button> -->
+
+	<div id="intro-screen" class="page">
+    <div class="main-text">
+          <img src="images/btns/default-image.png">
+          <button type="button" class="btn btn-primary btn-lg btn-block" id="btn-start">Start</button>
     </div>
-    
-    <footer id="footer">
-      <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-        <div class="col-xs-9">
-          <button type="button" class="btn btn-default" id="btn-pencil">P</button>
-          <button type="button" class="btn btn-default" id="btn-colorpicker">C</button>
-          <button type="button" class="btn btn-default" id="btn-eraser">E</button>
-          <button type="button" class="btn btn-default" id="btn-brushsize">S</button>
-        </div>
-        <div class="col-xs-3">
-          <button type="button" class="btn btn-default pull-right" id="btn-done">Done</button>
-        </div>
-      </nav>
-    </footer>
-    
-    <div id="done-panel" class="panel panel-default">
-      <div class="panel-heading">What do you want to do?</div>
-      <div class="panel-body">
-        <button type="button" class="btn btn-primary btn-lg btn-block">Save</button>
-        <button type="button" class="btn btn-default btn-lg btn-block">New</button>
-        <button type="button" class="btn btn-default btn-lg btn-block">Cancel</button>
+  </div>
+
+
+  <div id="container">
+
+      <div id="top">
+        <canvas id="sketchpad">
+          Sorry, your browser is not supported.
+        </canvas>
       </div>
-    </div>
-    
-    <div class="toolbar" id="colorpicker">
-        <div class="col-xs-12">
-          <button class="btn btn-default" id="color-zero">b</button>
-          <button class="btn btn-default" id="color-one">r</button>
-          <button class="btn btn-default" id="color-two">o</button>
-          <button class="btn btn-default" id="color-three">y</button>
-          <button class="btn btn-default" id="color-four">g</button>
-          <button class="btn btn-default" id="color-five">b</button>
-          <button class="btn btn-default" id="color-six">i</button>
-          <button class="btn btn-default" id="color-seven">v</button>
-        </div>
-    </div>
-    
-    <div class="toolbar" id="brushsize">
-        <div class="col-xs-12">
-          <!-- <p>Brush size</p> -->
-          <div id="brushStrokeSize" class="slider slider-horizontal" style="width: 240px;"></div>
-          
-          <!-- <p>Brush softness</p> -->
-          <!-- <div id="brushSoftness" class="slider slider-horizontal" style="width: 140px;"></div> -->
-          
-          <!-- <p>Opacity</p>
-          <div id="brushOpacity" class="slider slider-horizontal" style="width: 140px;"></div> -->
-        </div>
-    </div>
 
-    <script type="text/javascript" src="js/base.js"></script>
-    <script type="text/javascript" src="js/webapp.js"></script>
-    <script type="text/javascript" src="js/offline.js"></script>
-    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="js/draw.js"></script>
-    <script type="text/javascript" src="js/toolbar.js"></script>
-    <script type="text/javascript" src="http://www.eyecon.ro/bootstrap-slider/js/bootstrap-slider.js"></script>
-    <script type="text/javascript" src="js/modernizr.js"></script>
+      <footer id="footer">
+        <nav id="maintoolbar" class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+          <div class="col-xs-9">
+            <button type="button" class="btn btn-xs" id="btn-pencil"><!-- <img src="images/btns/btn-brush.png"> --></button>
+            <button type="button" class="btn btn-xs" id="btn-eraser"><img src="images/btns/btn-eraser.png"></button>
+            <!-- <button type="button" class="btn btn-default"id="spraycan">Spray</button> -->
+            <button type="button" class="btn btn-xs" id="btn-colorpicker"><img src="images/btns/btn-palette.png"></button>
+            <button type="button" class="btn btn-xs" id="btn-brushsize"><img src="images/btns/btn-styles.png"></button>
+            <button type="button" class="btn btn-xs" id="btn-undo"><img src="images/btns/btn-undo.png"></button>
+          </div>
+          <div class="col-xs-3">
+            <button type="button" class="btn btn-xs pull-right" id="btn-done"><img src="images/btns/btn-done.png"></button>
+          </div>
+        </nav>
 
-    <!-- 
-        Loosely based on fxosstub: https://github.com/Jaxo/fxosstub
-    -->
-    
-    <script type="text/javascript" charset="utf-8">
-      
-      // Change the Brush Softness
-      
-      
-      // Change the Brush Opacity
-      
-      
-      // Change the Brush Stroke
-      var BrushChange = function() {
-        context.lineWidth = brushStroke.getValue();
-      };
-      
-      var brushStroke = $('#brushStrokeSize').slider({
-        tooltip: "hide"
-      })
-                      .on('slide', BrushChange)
-                      .data('slider');
-      
-      
-    </script>
+        <div id="done-panel" class="panel panel-default">
+          <div class="panel-body">
+            <button type="button" class="btn btn-primary btn-lg btn-block" id="addDrawing" >Save to Gallery</button>
+            <button type="button" class="btn btn-default btn-lg btn-block" id="btn-new">Clear</button>
+            <button type="button" class="btn btn-default btn-lg btn-block" id="btn-cancel" href="">Cancel</button>
+          </div>
+        </div>
+
+        <div class="toolbar" id="colorpicker">
+            <div class="col-xs-12">
+              <button class="btn btn-default" id="color-zero"></button>
+              <button class="btn btn-default" id="color-one"></button>
+              <button class="btn btn-default" id="color-two"></button>
+              <button class="btn btn-default" id="color-three"></button>
+              <button class="btn btn-default" id="color-four"></button>
+              <button class="btn btn-default" id="color-five"></button>
+              <!-- <button class="btn btn-default" id="color-six"></button> -->
+              <!-- <button class="btn btn-default" id="color-seven"></button> -->
+            </div>
+        </div>
+
+        <!-- Brush adjustments -->
+        <div class="toolbar" id="brushsize">
+            <div class="col-xs-12">
+              <!-- <p>Brush size</p> -->
+
+              <section role="region" class="pull-left" id="sliderarea">
+                <div role="slider" aria-valuemin="10" aria-valuenow="10" aria-valuemax="100" aria-valuetext="slider description">
+                  <div>
+                    <progress min="10" value="80" max="100" id="newProgressBar"></progress>
+                    <button id="handler">handler</button>
+                  </div>
+                </div>
+              </section>
+
+              <!-- <input type="range" name="points" min="1" max="10" id="brushSizeNew"> -->
+
+              <!-- <div id="brushStrokeSize" class="slider slider-horizontal" style="width: 160px;"></div> -->
+              <p class="pull-right">
+                <button class="btn btn-xs" id="roundbrush"><img src="images/btns/btn-brush-round.png"></button>
+                <button class="btn btn-xs"id="squarebrush"><img src="images/btns/btn-brush-square.png"></button>
+              </p>
+
+              <!-- <p>Brush softness</p> -->
+              <!-- <div id="brushSoftness" class="slider slider-horizontal" style="width: 140px;"></div> -->
+
+              <!-- <p>Opacity</p>
+              <div id="brushOpacity" class="slider slider-horizontal" style="width: 140px;"></div> -->
+            </div>
+        </div>
+
+        <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                  <img src="" id="theimage">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+          </div><!-- /.modal -->
+
+
+      </footer>
+
+  </div> <!-- end container --> 
+  
+  <script type="text/javascript" src="js/draw.js"></script>
+  <script type="text/javascript" src="js/toolbar.js"></script>
+  <script type="text/javascript" src="js/bootstrap-slider.js"></script>
+  <script type="text/javascript" src="js/modernizr.js"></script>
+  <script type="text/javascript" src="js/jquery.hammer.min.js"></script>
+  <script type="text/javascript" src="js/modal.js"></script>
+  <script type="text/javascript" defer src="js/seekbars.js"></script>
+
+  <!--
+      Loosely based on fxosstub: https://github.com/Jaxo/fxosstub
+  -->
 
 </body>
 </html>
