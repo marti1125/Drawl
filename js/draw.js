@@ -35,16 +35,16 @@
     if ($( window ).width() > 320) {
       //alert("large");
       canvas.width  = 320;
-      canvas.height = 520;
+      canvas.height = 400;
       canvas.style.width  = '320px';
-      canvas.style.height = '520px';
+      canvas.style.height = '400px';
     }
     //small screen size
     //alert("small");
     canvas.width  = 320;
-    canvas.height = 520;
+    canvas.height = 400;
     canvas.style.width  = '320px';
-    canvas.style.height = '520px';
+    canvas.style.height = '400px';
 
     //$('#brushSizeNew').change( function() {
         //brushSize = this.value;
