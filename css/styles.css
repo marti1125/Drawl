@@ -170,11 +170,11 @@ input:focus { outline: none; }
   //background: none;
 }
 
-#roundbrush { 
+#roundbrush {
   opacity: 0.7;
 }
 
-#squarebrush {  
+#squarebrush {
   opacity: 0.7;
 }
 
@@ -276,7 +276,8 @@ button#color-seven {
 }
 
 .brushSelected {
-	background: #00BFFF;
+	//background: #00BFFF;
+	opacity: 1 !important;
 }
 
 .toolSelected {

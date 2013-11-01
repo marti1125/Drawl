@@ -44,9 +44,6 @@
       "description": "Required for saving pictures",
       "access": "readwrite"
     },
-    "desktop-notification": {
-      "description": "To show notifications"
-    },           
     "device-storage:sdcard": {
       "description": "Required for saving to sdcard",
       "access": "readwrite"
