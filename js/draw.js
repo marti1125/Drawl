@@ -35,14 +35,14 @@
     if ($( window ).width() > 320) {
       //alert("large");
       canvas.width  = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.height = window.innerHeight - document.getElementById('maintoolbar').offsetHeight;
       canvas.style.width  = '100%';
       canvas.style.height = '100%';
     }
     //small screen size
     //alert("small");
-    canvas.width  = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width  = window.innerWidth;    
+    canvas.height = window.innerHeight - document.getElementById('maintoolbar').offsetHeight;
     canvas.style.width  = '100%';
     canvas.style.height = '100%';
 
