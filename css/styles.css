@@ -67,7 +67,7 @@ body {
 }
 
 #sketchpad {
-  //background: red;
+  display:block;  
   height: 100%;
   width: 100%;
 }

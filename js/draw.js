@@ -34,17 +34,17 @@
     //large screensize
     if ($( window ).width() > 320) {
       //alert("large");
-      canvas.width  = 320;
-      canvas.height = 400;
-      canvas.style.width  = '320px';
-      canvas.style.height = '400px';
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+      canvas.style.width  = '100%';
+      canvas.style.height = '100%';
     }
     //small screen size
     //alert("small");
-    canvas.width  = 320;
-    canvas.height = 400;
-    canvas.style.width  = '320px';
-    canvas.style.height = '400px';
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.style.width  = '100%';
+    canvas.style.height = '100%';
 
     //$('#brushSizeNew').change( function() {
         //brushSize = this.value;
