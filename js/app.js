@@ -65,4 +65,10 @@ $(document).ready(function(){
 
 		});
 
+   
+      $('#intro-screen').css('height',window.innerHeight+'px');
+    
+
+    
+
 });
