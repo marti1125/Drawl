@@ -1,6 +1,6 @@
     // Square Brush
     $("#squarebrush").click(function(){
-      context.lineCap = 'square';
+      tmp_ctx.lineCap = 'square';
 	  $("#roundbrush").removeClass('brushSelected');
 	  $(this).addClass('brushSelected');
     });
@@ -46,6 +46,18 @@
     canvas.style.width  = '100%';
     canvas.style.height = '100%';
 
+    var sketch = document.querySelector('#top');
+    var sketch_style = getComputedStyle(sketch);
+
+    // temporal canvas
+    var tmp_canvas = document.createElement('canvas');
+    var tmp_ctx = tmp_canvas.getContext('2d');
+    tmp_canvas.id = 'tmp_canvas';
+    tmp_canvas.width = canvas.width;
+    tmp_canvas.height = canvas.height;
+    
+    sketch.appendChild(tmp_canvas);
+
     //$('#brushSizeNew').change( function() {
         //brushSize = this.value;
     //});
@@ -63,76 +75,114 @@
     var brushSize = 1;
     var brushColor = '#000000';
     var points = [];
-
+    var coors;
+    tmp_ctx.lineJoin = 'round';
+    tmp_ctx.lineCap = 'round';
+    tmp_ctx.brushColor = '#000000'
+    tmp_ctx.brushSize = 1;
     //for small screensize
     $("#sketchpad").css("background-image","url('../images/btns/startup-image.png')")
                    .css("background-position","center center")
                    .css("background-repeat","no-repeat")
                    .css("background-size","30%")
 
-
-
     var firstTimeUse = 0;
 
     // create a drawer which tracks touch movements
     var drawer = {
-       isDrawing: false,
-       touchstart: function(coors){
-
+       //isDrawing: false,
+       touchstart: function(e){
+          tmp_canvas.addEventListener('touchmove', onPaint, false);
           firstTimeUse ++;
-
-          //remove div, for first time use
           if(firstTimeUse == 1){
             $("#sketchpad").css("background-image","none")
             //context.fillStyle = 'rgba(0,0,0,1)'; // black
             //context.strokeStyle = 'rgba(0,0,0,1)'; // black
           }
 
-          if (context.lineWidth != brushSize) {
-              context.lineWidth = brushSize;
+          if (tmp_ctx.lineWidth != brushSize) {
+              tmp_ctx.lineWidth = brushSize;
           }
           // causes the eraser to get messed up, if the current brush color doesnt equal the brush color set, then reset it
-          if (context.strokeStyle != brushColor) {
-              context.strokeStyle = brushColor;
+          if (tmp_ctx.strokeStyle != brushColor) {
+              tmp_ctx.strokeStyle = brushColor;
           }
+          /*
 
-          context.beginPath();
-          context.moveTo(coors.x, coors.y);
-          points.push({
+          //remove div, for first time use
+          
+*/
+          //tmp_ctx.beginPath();
+          //tmp_ctx.moveTo(coors.x, coors.y);
+          /*points.push({
               x: coors.x,
-              y: coors.y,
-              size: brushSize,
-              color: brushColor,
-              mode: "begin"
-          });
-          this.isDrawing = true;
+              y: coors.y
+              //size: brushSize,
+              //color: brushColor
+              //mode: "begin"
+          });*/
+          //startDraw = true;
+         // onPaint();
+          //this.isDrawing = true;
+
+          coors.x = typeof e.touches[0].offsetX !== 'undefined' ? e.touches[0].offsetX : e.touches[0].pageX;
+          coors.y = typeof e.touches[0].offsetY !== 'undefined' ? e.touches[0].offsetY : e.touches[0].pageY;
+
+          points.push({x: coors.x, y: coors.y});
+
+          onPaint();
+
+         
        },
-       touchmove: function(coors){
-          if (this.isDrawing) {
-             context.lineTo(coors.x, coors.y);
+       touchmove: function(e){
+          //if (this.isDrawing) {
+             //tmp_ctx.lineTo(coors.x, coors.y);
              // command pattern stuff
-             points.push({
+             /*points.push({
                  x: coors.x,
-                 y: coors.y,
-                 size: brushSize,
-                 color: brushColor,
-                 mode: "draw"
+                 y: coors.y
+                 //size: brushSize,
+                 //color: brushColor
+                 //mode: "draw"
              });
-             context.stroke();
-          }
+             tmp_ctx.stroke();
+             startDraw = true;
+             onPaint();*/
+
+          //}
+          coors.x = typeof e.touches[0].offsetX !== 'undefined' ? e.touches[0].offsetX : e.touches[0].pageX;
+          coors.y = typeof e.touches[0].offsetY !== 'undefined' ? e.touches[0].offsetY : e.touches[0].pageY;
+
        },
-       touchend: function(coors){
-          if (this.isDrawing) {
-             this.touchmove(coors);
-             this.isDrawing = false;
+       touchend: function(coors){       
+         // if (this.isDrawing) { 
+         tmp_canvas.removeEventListener('touchmove', onPaint, false);
+    //console.log('start!! 33333')
+    // Writing down to real canvas now
+    context.drawImage(tmp_canvas, 0, 0);
+    // Clearing tmp canvas
+    tmp_ctx.clearRect(0, 0, tmp_canvas.width, tmp_canvas.height);
+    
+    // Emptying up Pencil Points
+    points = [];    
+        // tmp_canvas.removeEventListener('mousemove', onPaint, false);       
+             /*startDraw = false;
+              onPaint();
+              console.log(coors.x)
              points.push({
                  x: coors.x,
-                 y: coors.y,
-                 size: brushSize,
-                 color: brushColor,
-                 mode: "end"
-             });
-          }
+                 y: coors.y
+                 //size: brushSize,
+                 //color: brushColor
+                 //mode: "end"
+             });*/
+           
+             //this.touchmove(coors);
+             //this.isDrawing = false;             
+             
+             
+             //onPaint();       
+         // }
        }
     };
 
@@ -168,7 +218,7 @@
         }
 
         // touchend clear the touches[0], so we need to use changedTouches[0]
-        var coors;
+        
         if(event.type === "touchend") {
             coors = {
                 x: event.changedTouches[0].pageX,
@@ -192,62 +242,66 @@
 
     // attach the touchstart, touchmove, touchend event listeners.
     if(touchAvailable){
-        canvas.addEventListener('touchstart', draw, false);
-        canvas.addEventListener('touchmove', draw, false);
-        canvas.addEventListener('touchend', draw, false);
+        tmp_canvas.addEventListener('touchstart', draw, false);
+        tmp_canvas.addEventListener('touchmove', draw, false);
+        tmp_canvas.addEventListener('touchend', draw, false);
     }
     // attach the mousedown, mousemove, mouseup event listeners.
     else {
-        canvas.addEventListener('mousedown', draw, false);
-        canvas.addEventListener('mousemove', draw, false);
-        canvas.addEventListener('mouseup', draw, false);
+        tmp_canvas.addEventListener('mousedown', draw, false);
+        tmp_canvas.addEventListener('mousemove', draw, false);
+        tmp_canvas.addEventListener('mouseup', draw, false);
     }
 
     function redrawAll() {
-
+        
         if (points.length == 0) {
             return;
         }
 
-        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.drawImage(tmp_canvas, 0, 0);
+
+        tmp_ctx.clearRect(0, 0, tmp_canvas.width, tmp_canvas.height);
 
         for (var i = 0; i < points.length; i++) {
-
+            console.log('fff222')
             var pt = points[i];
 
             var begin = false;
 
             // check to see if the brush size that was stored equals the current strokesize, if not, then set to brushsize up top
-            if (context.lineWidth != pt.size) {
-                context.lineWidth = pt.size;
+            if (tmp_ctx.lineWidth != pt.size) {
+                tmp_ctx.lineWidth = pt.size;
                 begin = true;
             }
-            if (context.strokeStyle != pt.color && context.strokeStyle) {
-                context.strokeStyle = pt.color;
+            if (tmp_ctx.strokeStyle != pt.color && tmp_ctx.strokeStyle) {
+                tmp_ctx.strokeStyle = pt.color;
                 begin = true;
             }
             if (pt.mode == "begin" || begin) {
-                context.beginPath();
-                context.moveTo(pt.x, pt.y);
+                tmp_ctx.beginPath();
+                tmp_ctx.moveTo(pt.x, pt.y);
             }
-            context.lineTo(pt.x, pt.y);
+            tmp_ctx.lineTo(pt.x, pt.y);
             if (pt.mode == "end" || (i == points.length - 1)) {
-                context.stroke();
+                tmp_ctx.stroke();
             }
         }
-        context.stroke();
+        tmp_ctx.stroke();
     }
 
+    
     function undoLast() {
+        
         points.pop();
-        redrawAll();
-
+        //redrawAll();
     }
 
     var interval;
 
     //for touchdown
     $("#btn-undo").bind('touchstart', function(){
+    
         $("#btn-eraser").removeClass('toolSelected');
         interval = setInterval(undoLast, 50);
     }).bind('touchend', function(){
@@ -267,3 +321,47 @@
     document.body.addEventListener('touchmove',function(event){
       event.preventDefault();
     },false);	// end body:touchmove
+
+    var onPaint = function() {
+      
+      //if(startDraw){
+        // Saving all the points in an array
+      points.push({x: coors.x, y: coors.y});
+      //alert(coors.x)
+
+      if (points.length < 3) {
+        var b = points[0];
+        tmp_ctx.beginPath();
+        //ctx.moveTo(b.x, b.y);
+        //ctx.lineTo(b.x+50, b.y+50);
+        tmp_ctx.arc(b.x, b.y, tmp_ctx.lineWidth / 2, 0, Math.PI * 2, !0);
+        tmp_ctx.fill();
+        tmp_ctx.closePath();
+        
+        return;
+      }
+      
+      // Tmp canvas is always cleared up before drawing.
+      tmp_ctx.clearRect(0, 0, tmp_canvas.width, tmp_canvas.height);
+      
+      tmp_ctx.beginPath();
+      tmp_ctx.moveTo(points[0].x, points[0].y);
+      
+      for (var i = 1; i < points.length - 2; i++) {
+        var c = (points[i].x + points[i + 1].x) / 2;
+        var d = (points[i].y + points[i + 1].y) / 2;
+        
+        tmp_ctx.quadraticCurveTo(points[i].x, points[i].y, c, d);
+      }
+      
+      // For the last 2 points
+      tmp_ctx.quadraticCurveTo(
+        points[i].x,
+        points[i].y,
+        points[i + 1].x,
+        points[i + 1].y
+      );
+      tmp_ctx.stroke();  
+      
+      
+    };

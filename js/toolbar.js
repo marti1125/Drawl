@@ -35,7 +35,7 @@
                       .css("background-size","31px 31px")
                       .css("background-repeat","no-repeat")
                       .css("background-position","center center");
-      brushColor = '#000000';
+      //brushColor = '#000000';
     })
 
     //Eraser button

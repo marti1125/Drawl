@@ -61,7 +61,7 @@ $(document).ready(function(){
 
 		$("#addDrawing").click(function(){
 		    // unplug device to test
-	      addDrawing();
+	      //addDrawing();
 
 		});
 
